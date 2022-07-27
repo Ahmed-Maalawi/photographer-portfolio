@@ -38,6 +38,29 @@
      <!-- Custom Style CSS Only For Demo Purpose -->
      <link id="cus-style" rel="stylesheet" href="{{ asset('admin_style/css/style-primary.css') }}" />
 
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+     <style>
+         .image-gallery {
+             display: flex;
+             flex-wrap: wrap;
+             gap: 10px;
+         }
+
+         .image-gallery > li {
+             height: 300px;
+             cursor: pointer;
+             position: relative;
+         }
+
+         .image-gallery li img {
+             object-fit: cover;
+             width: 100%;
+             height: 100%;
+             vertical-align: middle;
+             border-radius: 5px;
+         }
+     </style>
  </head>
 
  <body class="skin-dark">
@@ -102,6 +125,56 @@
      <script src="{{ asset('admin_style/js/plugins/vmap/maps/jquery.vmap.world.js') }}"></script>
      <script src="{{ asset('admin_style/js/plugins/vmap/maps/samples/jquery.vmap.sampledata.js') }}"></script>
      <script src="{{ asset('admin_style/js/plugins/vmap/vmap.active.js') }}"></script>
+
+     <!-- Plugins & Activation JS For (Tables) Only This Page -->
+     <script src="{{ asset('admin_style/js/plugins/moment/moment.min.js') }}"></script>
+     <script src="{{ asset('admin_style/js/plugins/footable/footable.min.js') }}"></script>
+     <script src="{{ asset('admin_style/js/plugins/footable/footable.active.js') }}"></script>
+
+
+     <!-- Plugins & Activation JS For upload file -->
+     <script src="{{ asset('admin_style/js/plugins/filepond/filepond.min.js') }}"></script>
+     <script src="{{ asset('admin_style/js/plugins/filepond/filepond-plugin-image-exif-orientation.min.js') }}"></script>
+     <script src="{{ asset('admin_style/js/plugins/filepond/filepond-plugin-image-preview.min.js') }}"></script>
+     <script src="{{ asset('admin_style/js/plugins/filepond/filepond.active.js') }}"></script>
+     <script src="{{ asset('admin_style/js/plugins/dropify/dropify.min.js') }}"></script>
+     <script src="{{ asset('admin_style/js/plugins/dropify/dropify.active.js') }}"></script>
+
+{{--     for toastr --}}
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+     <script type="text/javascript">
+         @if(Session::has('message'))
+             var type = "{{ Session::get('alert-type', 'info') }}"
+         switch (type) {
+            case 'info':
+                toastr.info("{{ Session::get('message') }}");
+                break;
+            case 'success':
+                toastr.success("{{ Session::get('message') }}");
+                break;
+            case 'warning':
+                toastr.warning("{{ Session::get('message') }}");
+                break;
+            case 'error':
+                toastr.error("{{ Session::get('message') }}");
+                break;
+         }
+          @endif
+     </script>
+
+{{--     change edit collection image   --}}
+     <script type="text/javascript">
+         $(document).ready(function () {
+             $('#Collection_img').change(function (e) {
+                 var reader = new FileReader();
+                 reader.onload = function (e) {
+                     $('#newImg').attr('src', e.target.result)
+                 }
+                 reader.readAsDataURL(e.target.files[0]);
+             });
+         });
+     </script>
 
  </body>
 

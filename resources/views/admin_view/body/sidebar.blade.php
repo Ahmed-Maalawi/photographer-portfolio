@@ -1,3 +1,10 @@
+@php
+    $prefix = Request::route()->getPrefix();
+    $route = Route::current()->getName();
+
+@endphp
+
+
 <div class="side-header show">
     <button class="side-header-close"><i class="zmdi zmdi-close"></i></button>
     <!-- Side Header Inner Start -->
@@ -12,10 +19,10 @@
                     </ul>
                 </li>
                 <li><a href="widgets.html"><i class="ti-palette"></i>  <span>Widgets </span></a></li>
-                <li class="has-sub-menu"><a href="#"><i class="ti-package"></i>  <span>Gallery </span></a>
+                <li class="has-sub-menu {{ ($prefix == 'admin/gallery')? 'active': ''}}"><a href="#"><i class="ti-package"></i>  <span>Gallery </span></a>
                     <ul class="side-header-sub-menu">
                         <li><a href="elements-alerts.html"><span>Manage Gallery </span></a></li>
-                        <li><a href="elements-accordions.html"><span>Add Collection </span></a></li>
+                        <li class="{{ ($route == 'add.collection')? 'active' : ''}}"><a href="{{ route('add.collection') }}"><span>Add Collection </span></a></li>
                         <li><a href="elements-avatar.html"><span>Add Photos </span></a></li>
 {{--                        <li><a href="elements-badge.html"><span>Badge </span></a></li>--}}
 {{--                        <li><a href="elements-buttons.html"><span>Buttons </span></a></li>--}}
