@@ -34,4 +34,48 @@ class ImageController extends Controller
         return redirect()->back()->with($notification);
 //        return redirect()->route('add.collection')->with($notification);
     }
+
+    public function displayImages()
+    {
+        $images = Image::all();
+        return view('admin_view.collection.manange_images', compact('images'));
+    }
+
+    public function Activate($id)
+    {
+        $Image = Image::findOrFail($id)->update([
+           'status' => true,
+        ]);
+
+        $notification = array(
+            'message' => 'Image Activated Successfully',
+            'alert-type' => 'info',
+        );
+        return redirect()->back()->with($notification);
+    }
+
+    public function disActivate($id)
+    {
+        $Image = Image::findOrFail($id)->update([
+            'status' => false,
+        ]);
+
+        $notification = array(
+            'message' => 'Image Dis-Activated Successfully',
+            'alert-type' => 'info',
+        );
+        return redirect()->back()->with($notification);
+    }
+
+    public function deleteImage($id)
+    {
+        Image::faindOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Image Dis-Activated Successfully',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->back()->with($notification);
+    }
 }

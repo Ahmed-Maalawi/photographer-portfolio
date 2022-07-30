@@ -209,16 +209,15 @@
                     <ul class="gallery-filter">
                         <li class="active" data-filter="*">All </li>
 
-                        @foreach($collections as $collection)
-                            <li data-filter=".{{ $collection->id }}">{{ $collection->name }} </li>
+                        @foreach($collections as $collection) <li data-filter=".{{ $collection->name }}">{{ $collection->name }} </li>
                         @endforeach
 
 
-                        <li data-filter=".personal">Personal </li>
-                        <li data-filter=".wedding">Wedding </li>
-                        <li data-filter=".event">Event </li>
-                        <li data-filter=".fashion">Fashion </li>
-                        <li data-filter=".product">Product </li>
+{{--                        <li data-filter=".personal">Personal </li>--}}
+{{--                        <li data-filter=".wedding">Wedding </li>--}}
+{{--                        <li data-filter=".event">Event </li>--}}
+{{--                        <li data-filter=".fashion">Fashion </li>--}}
+{{--                        <li data-filter=".product">Product </li>--}}
                     </ul>
                 </div>
             </div>
@@ -226,13 +225,13 @@
                 <div class="masonry-items">
 
                     @foreach($photos as $img)
-                        <div class="col-md-4 gallery-masonry-wrapper single-item {{ $img->collection_id }}">
+                        <div class="col-md-4 gallery-masonry-wrapper single-item {{ $img['collection']['name'] }}">
                             <a href="{{ asset($img->img_path) }}" title="" class="gallery-masonry-item-img-link img-zoom">
                                 <div class="gallery-box">
                                     <div class="gallery-img">  <img src="{{ asset($img->img_path) }}" class="img-fluid mx-auto d-block" alt="" />  </div>
                                     <div class="gallery-masonry-item-img"></div>
                                     <div class="gallery-masonry-item-content">
-                                        <div class="gallery-masonry-item-category">Wedding </div>
+                                        <div class="gallery-masonry-item-category">{{ $img['collection']['name'] }} </div>
                                         <h4 class="gallery-masonry-item-title">Quisue sen duru martin </h4>
                                     </div>
                                 </div>
@@ -366,7 +365,8 @@
                         <div class="testimonials-box">
                             <div class="owl-carousel owl-theme">
                                 <div class="item">  <span class="quote"><img src="{{ asset('user_style/img/quot.png') }}" alt="" /></span>
-                                    <p class="v-border">Photographers viverra tristique duis _____ dias the nesue niva ______ ateuene artines duruna setlie _______ fermen. Quisque sed tellus ___ lorem nullam dururana tortor _____ porta. </p>
+
+                                    <p class="v-border">Photographers viverra tristique duis vitae dias the nesue niva aestan ateuene artines duruna setlie suscipe fermen. Quisque sed tellus man lorem nullam dururana tortor felis porta. </p>
                                     <div class="info">
                                         <div class="author-img">  <img src="{{ asset('user_style/img/team/1.jpg') }}" alt="" />  </div>
                                         <div class="cont">
@@ -377,7 +377,7 @@
                                 <div class="item">  <span class="quote">
                                          <img src="{{ asset('user_style/img/quot.png') }}" alt="" />
                                      </span>
-                                    <p class="v-border">Photographers viverra tristique duis _____ dias the nesue niva ______ ateuene artines duruna setlie _______ fermen. Quisque sed tellus ___ lorem nullam dururana tortor _____ porta. </p>
+                                    <p class="v-border">Photographers viverra tristique duis vitae dias the nesue niva aestan ateuene artines duruna setlie suscipe fermen. Quisque sed tellus man lorem nullam dururana tortor felis porta. </p>
                                     <div class="info">
                                         <div class="author-img">  <img src="{{ asset('user_style/img/team/2.jpg') }}" alt="" />  </div>
                                         <div class="cont">

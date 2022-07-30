@@ -43,6 +43,7 @@
                     </div><!-- Side Header Toggle & Search End -->
 
                     <!-- Header Notifications Area Start -->
+
                     <div class="col-auto">
 
                         <ul class="header-notification-area">

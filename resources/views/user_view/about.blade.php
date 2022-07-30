@@ -7,7 +7,7 @@
                 <div class="col-md-5">
                     <h1>About me </h1>
                     <hr class="border-1" />
-                    <p>I am professional photographer _____ on New York, creating ___________ with black, white and ______ in-between. </p>
+                    <p>I am professional photographer based on New York, creating dreamscapes with black, white and shades in-between. </p>
                 </div>
             </div>
         </div>
@@ -17,13 +17,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5 mb-30 animate-box" data-animate-effect="fadeInUp">
-                    <p>Quisque sed tellus lorem. ______ bibena tortor seman marine _____ felis the porta dignissim _______. </p>
-                    <p class="mb-30">Vivamus tortor risus, pharetra __ venenatis ac, rutrum eget ____. Fusce convallis nibh felis, ____ hendrerit diam rhoncus eget. _____ dictum lacus eleifend nisl _________ venenatis. </p>
+                    <p>Quisque sed tellus lorem. Nullam bibena tortor seman marine porta felis the porta dignissim pretium. </p>
+                    <p class="mb-30">Vivamus tortor risus, pharetra ut venenatis ac, rutrum eget ante. Fusce convallis nibh felis, eget hendrerit diam rhoncus eget. Donec dictum lacus eleifend nisl efficitur venenatis. </p>
                     <ul class="list-unstyled about-list mb-30">
                         <li>
                             <div class="about-list-icon">  <span class="ti-check"></span>  </div>
                             <div class="about-list-text">
-                                <p>Over 15 years of __________ </p>
+                                <p>Over 15 years of experience </p>
                             </div>
                         </li>
                         <li>
@@ -64,13 +64,13 @@
                         <div class="about-info-img mb-60">
                             <div class="img">  <img src="{{ asset('user_style/img/about2.jpg') }}" class="img-fluid" alt="" />  </div>
                         </div>
-                        <h2 class="section-title">My only mission: Capture ___________ moments </h2>
-                        <p>Nulla quis efficitur lacus, ________ posuere augue. Duis eu __________ arcuman. Mauris luctus nulla _ scelerisque ultricies. Integer leo ____, auctor ac aliquamen the ________ quis risus. Maecenas vitae ______ massa. </p>
+                        <h2 class="section-title">My only mission: Capture captivating moments </h2>
+                        <p>Nulla quis efficitur lacus, pulvinar posuere augue. Duis eu vestibulum arcuman. Mauris luctus nulla a scelerisque ultricies. Integer leo nisl, auctor ac aliquamen the placerat quis risus. Maecenas vitae tellus massa. </p>
                     </div>
                     <div class="col-md-6 offset-md-1 pt-60">
-                        <h2 class="section-title">Why I started as _ photographer </h2>
-                        <p>Nulla quis efficitur lacus, ________ posuere augue. Duis eu __________ arcuman. Mauris luctus nulla _ scelerisque ultricies. Integer leo ____, auctor ac aliquamen the ________ quis risus. Maecenas vitae ______ massa. Phasellus faucibus leo __ finibus pharetra. Suspendisse est ____, convallis vitae arcuma euismo. </p>
-                        <p>Integer leo nisl, auctor __ aliquam a, placerat quis _____. Maecenas vitae tellus massa. _________ faucibus leo in finibus ________. Suspendisse est diam, convallis _____ arcu at, euismod pulvinar _____. </p>
+                        <h2 class="section-title">Why I started as a photographer </h2>
+                        <p>Nulla quis efficitur lacus, pulvinar posuere augue. Duis eu vestibulum arcuman. Mauris luctus nulla a scelerisque ultricies. Integer leo nisl, auctor ac aliquamen the placerat quis risus. Maecenas vitae tellus massa. Phasellus faucibus leo in finibus pharetra. Suspendisse est diam, convallis vitae arcuma euismo. </p>
+                        <p>Integer leo nisl, auctor ac aliquam a, placerat quis risus. Maecenas vitae tellus massa. Phasellus faucibus leo in finibus pharetra. Suspendisse est diam, convallis vitae arcu at, euismod pulvinar purus. </p>
                         <div class="about-info-img pt-60">
                             <div class="img">  <img src="{{ asset('user_style/img/about3.jpg') }}" class="img-fluid" alt="" />  </div>
                         </div>
@@ -86,16 +86,30 @@
                 <div class="col-md-5 mb-20">
                     <h2 class="section-title"><span>Professional Team </span></h2>
                     <hr class="border-1" />
-                    <p class="section-title2">Quisque sed tellus nullam _____ the volutpat dignissim pretium. </p>
+                    <p class="section-title2">Quisque sed tellus nullam biben the volutpat dignissim pretium. </p>
                 </div>
             </div>
             <div class="row">
+                @foreach($teamMember as $member)
+                    <div class="col-md-4">
+                        <div class="team-card mb-30">
+                            <div class="team-img"><img style="max-height: 411.4px" src="{{ asset($member->img_path) }}" alt="{{ $member->name }}" class="w-100" /></div>
+                            <div class="team-content">
+                                <h3 class="team-title">{{ $member->name }}</h3>
+                                <p class="team-text">{{ $member->pio }} </p>
+                            </div>
+                            <div class="title-box">
+                                <h3 class="mb-0">{{ $member->jop_title }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
                 <div class="col-md-4">
                     <div class="team-card mb-30">
                         <div class="team-img"><img src="{{ asset('user_style/img/team/3.jpg') }}" alt="" class="w-100" /></div>
                         <div class="team-content">
                             <h3 class="team-title">Enrico Brown </h3>
-                            <p class="team-text">I'm a professional product ____________ in New York, NY. _______ sed tellus nullam biben ___ volutan vetium. </p>
+                            <p class="team-text">I'm a professional product photographer in New York, NY. Quisque sed tellus nullam biben the volutan vetium. </p>
                         </div>
                         <div class="title-box">
                             <h3 class="mb-0">Enrico Brown </h3>
@@ -107,7 +121,7 @@
                         <div class="team-img"><img src="{{ asset('user_style/img/team/2.jpg') }}" alt="" class="w-100" /></div>
                         <div class="team-content">
                             <h3 class="team-title">Olivia White </h3>
-                            <p class="team-text">I'm a professional fashion ____________ in Bern, Switzerland. Quisque ___ tellus nullam biben the _______ vetium. </p>
+                            <p class="team-text">I'm a professional fashion photographer in Bern, Switzerland. Quisque sed tellus nullam biben the volutan vetium. </p>
                         </div>
                         <div class="title-box">
                             <h3 class="mb-0">Olivia White </h3>
@@ -119,7 +133,7 @@
                         <div class="team-img"><img src="{{ asset('user_style/img/team/1.jpg') }}" alt="" class="w-100" /></div>
                         <div class="team-content">
                             <h3 class="team-title">Micheal Martin </h3>
-                            <p class="team-text">I'm a professional bride ____________ in London, UK. Quisque ___ tellus nullam biben the _______ vetium. </p>
+                            <p class="team-text">I'm a professional fashion photographer in Bern, Switzerland. Quisque sed tellus nullam biben the volutan vetium. </p>
                         </div>
                         <div class="title-box">
                             <h3 class="mb-0">Micheal Martin </h3>
@@ -136,14 +150,14 @@
                 <div class="row">
                     <!-- Work together -->
                     <div class="col-md-6 mb-30 animate-box" data-animate-effect="fadeInUp">
-                        <h5>Need help with professional ___________? Let's work together! </h5>  <a href="contact.html" class="button-tersiyer">Contact me </a>
+                        <h5>Need help with professional photography? Let's work together! </h5>  <a href="contact.html" class="button-tersiyer">Contact me </a>
                     </div>
                     <!-- Testiominals -->
                     <div class="col-md-5 offset-md-1 animate-box" data-animate-effect="fadeInUp">
                         <div class="testimonials-box">
                             <div class="owl-carousel owl-theme">
                                 <div class="item">  <span class="quote"><img src="{{ asset('user_style/img/quot.png') }}" alt="" /></span>
-                                    <p class="v-border">Photographers viverra tristique duis _____ dias the nesue niva ______ ateuene artines duruna setlie _______ fermen. Quisque sed tellus ___ lorem nullam dururana tortor _____ porta. </p>
+                                    <p class="v-border">Photographers viverra tristique duis vitae dias the nesue niva aestan ateuene artines duruna setlie suscipe fermen. Quisque sed tellus man lorem nullam dururana tortor felis porta. </p>
                                     <div class="info">
                                         <div class="author-img">  <img src="{{ asset('user_style/img/team/1.jpg') }}" alt="" />  </div>
                                         <div class="cont">
@@ -154,7 +168,7 @@
                                 <div class="item">  <span class="quote">
                                          <img src="{{ asset('user_style/img/quot.png') }}" alt="" />
                                      </span>
-                                    <p class="v-border">Photographers viverra tristique duis _____ dias the nesue niva ______ ateuene artines duruna setlie _______ fermen. Quisque sed tellus ___ lorem nullam dururana tortor _____ porta. </p>
+                                    <p class="v-border">Photographers viverra tristique duis vitae dias the nesue niva aestan ateuene artines duruna setlie suscipe fermen. Quisque sed tellus man lorem nullam dururana tortor felis porta. </p>
                                     <div class="info">
                                         <div class="author-img">  <img src="{{ asset('user_style/img/team/2.jpg') }}" alt="" />  </div>
                                         <div class="cont">

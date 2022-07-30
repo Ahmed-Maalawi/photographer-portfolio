@@ -108,12 +108,12 @@ class CollectionController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'Collection_img' => 'image|mimes:jpg,png,jpeg,gif,svg',
+            'img_path' => 'image|mimes:jpg,png,jpeg,gif,svg',
             'description' => 'required',
         ], [
             'name.required' => 'Enter Collection Name',
-            'Collection_img.image' => 'file must be image',
-            'Collection_img.mimes' => 'image extension must be jpg,png,jpeg,gif,svg',
+            'img_path.image' => 'file must be image',
+            'img_path.mimes' => 'image extension must be jpg,png,jpeg,gif,svg',
             'description.required' => 'Enter Collection Description',
         ]);
 

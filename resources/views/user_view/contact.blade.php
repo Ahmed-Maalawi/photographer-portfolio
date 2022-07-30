@@ -7,7 +7,7 @@
                 <div class="col-md-5 text-left caption">
                     <h1>Contact </h1>
                     <hr class="border-1" />
-                    <p>Praesent sed nisl ullamcorper _____ utah phare mavna busnini _______ the ornare ipsum. </p>
+                    <p>Praesent sed nisl ullamcorper metus utah phare mavna busnini viventa the ornare ipsum. </p>
                 </div>
             </div>
         </div>
@@ -18,7 +18,7 @@
             <div class="row mb-120">
                 <div class="col-md-5 mb-60 animate-box" data-animate-effect="fadeInUp">
                     <h5>Information </h5>
-                    <p class="mb-30">Praesent sed nisl ullamcorper ___ drana duru metus utah _____ mavna busnini viventa the ______ ipsum. </p>
+                    <p class="mb-30">Praesent sed nisl ullamcorper the drana duru metus utah phare mavna busnini viventa the ornare ipsum. </p>
                     <div class="contact-link">
                         <div class="contact-link-icon"><img src="{{ asset('user_style/img/icons/c1.svg') }}" alt="" /></div>
                         <div class="contact-link-content">
@@ -87,7 +87,7 @@
             <div class="row">
                 <div class="col-md-12 text-center mb-20">
                     <h2 class="section-title">Frequently Asked Questions </h2>
-                    <p class="section-title2">Quisque sed tellus nullam _____ the volutpat dignissim pretium. </p>
+                    <p class="section-title2">Quisque sed tellus nullam biben the volutpat dignissim pretium. </p>
                 </div>
             </div>
             <div class="row">
@@ -96,34 +96,34 @@
                     <div class="accordion">
                         <div class="item">
                             <div class="title">
-                                <h6>Are you open for ___ projects or commissions? </h6>
+                                <h6>Are you open for new projects or commissions? </h6>
                             </div>
                             <div class="accordion-info">
-                                <p>Excepteur sint occaecat cupidatat ___ proident, sunt in culpa ___ officia deserunt mollit anim __ est laborum. Duis aute _____ dolor in reprehenderit in _________ velit esse cillum nulla. </p>
+                                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum nulla. </p>
                             </div>
                         </div>
                         <div class="item">
                             <div class="title">
-                                <h6>Do you offer photography ____ abroad? </h6>
+                                <h6>Do you offer photography work abroad? </h6>
                             </div>
                             <div class="accordion-info">
-                                <p>Excepteur sint occaecat cupidatat ___ proident, sunt in culpa ___ officia deserunt mollit anim __ est laborum. Duis aute _____ dolor in reprehenderit in _________ velit esse cillum nulla. </p>
+                                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum nulla. </p>
                             </div>
                         </div>
                         <div class="item">
                             <div class="title">
-                                <h6>Where are you currently _______? </h6>
+                                <h6>Where are you currently located? </h6>
                             </div>
                             <div class="accordion-info">
-                                <p>Excepteur sint occaecat cupidatat ___ proident, sunt in culpa ___ officia deserunt mollit anim __ est laborum. Duis aute _____ dolor in reprehenderit in _________ velit esse cillum nulla. </p>
+                                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum nulla. </p>
                             </div>
                         </div>
                         <div class="item">
                             <div class="title">
-                                <h6>Are you open for _________/________ work? </h6>
+                                <h6>Are you open for freelance/contract work? </h6>
                             </div>
                             <div class="accordion-info">
-                                <p>Excepteur sint occaecat cupidatat ___ proident, sunt in culpa ___ officia deserunt mollit anim __ est laborum. Duis aute _____ dolor in reprehenderit in _________ velit esse cillum nulla. </p>
+                                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum nulla. </p>
                             </div>
                         </div>
                     </div>
@@ -138,14 +138,14 @@
                 <div class="row">
                     <!-- Work together -->
                     <div class="col-md-6 mb-30 animate-box" data-animate-effect="fadeInUp">
-                        <h5>Need help with professional ___________? Let's work together! </h5>  <a href="contact.html" class="button-tersiyer">Contact me </a>
+                        <h5>Need help with professional photography? Let's work together! </h5>  <a href="{{ route('contact') }}" class="button-tersiyer">Contact me </a>
                     </div>
                     <!-- Testiominals -->
                     <div class="col-md-5 offset-md-1 animate-box" data-animate-effect="fadeInUp">
                         <div class="testimonials-box">
                             <div class="owl-carousel owl-theme">
                                 <div class="item">  <span class="quote"><img src="{{ asset('user_style/img/quot.png') }}" alt="" /></span>
-                                    <p class="v-border">Photographers viverra tristique duis _____ dias the nesue niva ______ ateuene artines duruna setlie _______ fermen. Quisque sed tellus ___ lorem nullam dururana tortor _____ porta. </p>
+                                    <p class="v-border">Photographers viverra tristique duis vitae dias the nesue niva aestan ateuene artines duruna setlie suscipe fermen. Quisque sed tellus man lorem nullam dururana tortor felis porta. </p>
                                     <div class="info">
                                         <div class="author-img">  <img src="{{ asset('user_style/img/team/1.jpg') }}" alt="" />  </div>
                                         <div class="cont">
@@ -156,7 +156,7 @@
                                 <div class="item">  <span class="quote">
                                          <img src="img/quot.png" alt="" />
                                      </span>
-                                    <p class="v-border">Photographers viverra tristique duis _____ dias the nesue niva ______ ateuene artines duruna setlie _______ fermen. Quisque sed tellus ___ lorem nullam dururana tortor _____ porta. </p>
+                                    <p class="v-border">Photographers viverra tristique duis vitae dias the nesue niva aestan ateuene artines duruna setlie suscipe fermen. Quisque sed tellus man lorem nullam dururana tortor felis porta. </p>
                                     <div class="info">
                                         <div class="author-img">  <img src="{{ asset('user_style/img/team/2.jpg') }}" alt="" />  </div>
                                         <div class="cont">

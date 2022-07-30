@@ -4,8 +4,8 @@
         <div class="first-footer">
             <div class="row">
                 <div class="col-md-6 widget-area">
-                    <h3>Sign up to get ______ update </h3>
-                    <p>Sign up for our _______ newsletter for the latest ____ &amp; articles </p>
+                    <h3>Sign up to get latest update </h3>
+                    <p>Sign up for our monthly newsletter for the latest news & articles </p>
                 </div>
                 <div class="col-md-6 widget-area">
                     <form id="subscribe-form" class="newsletter-form" method="post" action="#" data-mailchimp="true">
@@ -29,7 +29,7 @@
                     <div class="widget clearfix">
                         <div class="footer-logo">  <img class="img-fluid" src="{{ asset('user_style/img/logo.png') }}" alt="" />  </div>
                         <div class="widget-text">
-                            <p>Photography inila miss uman _____ eliten finus vivera alacus ____ the drudean seneice miss ________ tonec a fermen. </p>
+                            <p>Photography inila miss uman saten eliten finus vivera alacus miss the drudean seneice miss notumane tonec a fermen. </p>
                         </div>
                     </div>
                 </div>
@@ -37,10 +37,10 @@
                     <div class="widget clearfix usful-links">
                         <h3 class="widget-title">Quick Links </h3>
                         <ul>
-                            <li><a href="about.html">About </a></li>
-                            <li><a href="services.html">Services </a></li>
-                            <li><a href="works.html">Works </a></li>
-                            <li><a href="blog.html">Blog </a></li>
+                            <li><a href="{{ route('about') }}">About </a></li>
+                            <li><a href="{{ route('service') }}">Services </a></li>
+                            <li><a href="{{ route('work') }}">Works </a></li>
+{{--                            <li><a href="{{ route('') }}">Blog </a></li>--}}
                         </ul>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                             </div>
                             <div class="featured-content">
                                 <div class="featured-desc">
-                                    <p>120 King St, Charleston __ 29401, USA </p>
+                                    <p>120 King St, Charleston SC 29401, USA </p>
                                 </div>
                             </div>
                         </div>

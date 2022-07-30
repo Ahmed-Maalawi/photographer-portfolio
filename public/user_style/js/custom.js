@@ -6,7 +6,7 @@
 01. ScrollIt
 02. Navbar scrolling background
 03. Close navbar-collapse when a  clicked
-04. Sections background image from data background 
+04. Sections background image from data background
 05. Isotope active
 06. Animations
 07. YouTubePopUp
@@ -25,11 +25,11 @@
 ------------------------------------------------------------------- */
 
 $(function() {
-    
+
     "use strict";
-    
+
     var wind = $(window);
-    
+
     // ScrollIt
     $.scrollIt({
       upKey: 38,                // key code to navigate to the next section
@@ -40,12 +40,12 @@ $(function() {
       onPageChange: null,       // function(pageIndex) that is called when page is changed
       topOffset: -70            // offste (in px) for fixed top navigation
     });
-    
+
     // Preloader
 	$("#preloader").fadeOut(900);
 	$(".preloader-bg").delay(800).fadeOut(900);
-	var wind = $(window);  
-    
+	var wind = $(window);
+
     // Navbar scrolling background
     wind.on("scroll",function () {
         var bodyScroll = wind.scrollTop(),
@@ -53,18 +53,18 @@ $(function() {
             logo = $(".navbar .logo> img");
         if(bodyScroll > 100){
             navbar.addClass("nav-scroll");
-            logo.attr('src', 'img/logo.png');
+            // logo.attr('src', '../img/logo.png');
         }else{
             navbar.removeClass("nav-scroll");
-            logo.attr('src', 'img/logo.png');
+            // logo.attr('src', '../img/logo.png');
         }
     });
-    
+
     // Close navbar-collapse when a  clicked
     $(".navbar-nav .dropdown-item a").on('click', function () {
         $(".navbar-collapse").removeClass("show");
     });
-    
+
     // Sections background image from data background
     var pageSection = $(".bg-img, section");
     pageSection.each(function(indx){
@@ -72,7 +72,7 @@ $(function() {
             $(this).css("background-image", "url(" + $(this).data("background") + ")");
         }
     });
-    
+
     // Isotope Active Masonry Gallery
 	$('.gallery-items').imagesLoaded(function () {
 		// Add isotope on click filter function
@@ -132,10 +132,10 @@ $(function() {
     $(function () {
         contentWayPoint();
     });
-    
+
     // YouTubePopUp
     $("a.vid").YouTubePopUp();
-    
+
     // Testimonials owlCarousel
     $('.blog .owl-carousel').owlCarousel({
         loop:true,
@@ -158,7 +158,7 @@ $(function() {
             }
         }
     });
-    
+
     // Testimonials owlCarousel
     $('.testimonials .owl-carousel').owlCarousel({
         loop:true,
@@ -181,7 +181,7 @@ $(function() {
             }
         }
     });
-    
+
     // Clients owlCarousel
     $('.clients .owl-carousel').owlCarousel({
         loop: true
@@ -203,7 +203,7 @@ $(function() {
             }
         }
     });
-    
+
     // MagnificPopup
     $(".img-zoom").magnificPopup({
         type: "image"
@@ -223,7 +223,7 @@ $(function() {
         , preloader: false
         , fixedContentPos: false
     });
-    
+
     //  Scroll back to top
     var progressPath = document.querySelector('.progress-wrap path');
     var pathLength = progressPath.getTotalLength();
@@ -254,10 +254,10 @@ $(function() {
         jQuery('html, body').animate({ scrollTop: 0 }, duration);
         return false;
     })
-    
+
 });
 
-// Slider 
+// Slider
 $(document).ready(function() {
     var owl = $('.header .owl-carousel');
     // Slider owlCarousel
