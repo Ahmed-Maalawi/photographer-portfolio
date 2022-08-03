@@ -4,6 +4,7 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use App\Models\Collection;
+use App\Models\Feedback;
 use App\Models\Image;
 use App\Models\Member;
 use Illuminate\Http\Request;
@@ -15,8 +16,9 @@ class UserController extends Controller
 
         $collections = Collection::all();
         $photos = Image::where('status', true)->get();
+        $feedback = Feedback::where('status', true)->get();
 
-        return view('user_view.index', compact('collections', 'photos'));
+        return view('user_view.index', compact('collections', 'photos', 'feedback'));
     }
 
     public function about()

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CollectionController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\user\UserController;
@@ -62,8 +63,17 @@ Route::group(['prefix'=> 'admin', 'middleware'=>['admin:admin']], function(){
 
     });
 
-    Route::group(['prefix' => 'feedback'], function (){
-//       Route::get('all', [])
+    Route::group(['prefix' => 'feedback'], function () {
+
+       Route::get('/all', [FeedbackController::class, 'index'])->name('index.feedback');
+       Route::get('/add', [FeedbackController::class, 'addFeedback'])->name('add.feedback');
+       Route::post('/store', [FeedbackController::class, 'storeFeedback'])->name('store.feedback');
+       Route::get('/edit/{id}', [FeedbackController::class, 'editFeedback'])->name('edit.feedback');
+       Route::post('/update', [FeedbackController::class, 'updateFeedback'])->name('update.feedback');
+       Route::get('/delete/{id}', [FeedbackController::class, 'deleteFeedback'])->name('delete.feedback');
+       Route::get('/disActive/{id}', [FeedbackController::class, 'disActive'])->name('disActive.feedback');
+       Route::get('/Activate/{id}', [FeedbackController::class, 'Activate'])->name('Activate.feedback');
+
     });
 });
 

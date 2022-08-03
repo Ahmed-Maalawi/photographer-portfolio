@@ -117,7 +117,6 @@ class MemberController extends Controller
         return redirect()->route('team')->with($notification);
     }
 
-
     public function ActiveMember($id)
     {
         Member::findOrFail($id)->update([

@@ -364,6 +364,18 @@
                     <div class="col-md-5 offset-md-1 animate-box" data-animate-effect="fadeInUp">
                         <div class="testimonials-box">
                             <div class="owl-carousel owl-theme">
+                                @foreach($feedback as $item)
+                                    <div class="item">  <span class="quote"><img src="{{ asset('user_style/img/quot.png') }}" alt="" /></span>
+
+                                        <p class="v-border">{{ $item->feedback }} </p>
+                                        <div class="info">
+                                            <div class="author-img">  <img class="img-fluid" src="{{ asset($item->profile_img) }}" alt="" />  </div>
+                                            <div class="cont">
+                                                <h6>{{ $item->name }} </h6>  <span>{{ $item->job }} </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
                                 <div class="item">  <span class="quote"><img src="{{ asset('user_style/img/quot.png') }}" alt="" /></span>
 
                                     <p class="v-border">Photographers viverra tristique duis vitae dias the nesue niva aestan ateuene artines duruna setlie suscipe fermen. Quisque sed tellus man lorem nullam dururana tortor felis porta. </p>

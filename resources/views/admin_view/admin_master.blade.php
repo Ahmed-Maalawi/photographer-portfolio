@@ -140,6 +140,11 @@
      <script src="{{ asset('admin_style/js/plugins/dropify/dropify.min.js') }}"></script>
      <script src="{{ asset('admin_style/js/plugins/dropify/dropify.active.js') }}"></script>
 
+
+     <!-- Plugins & Activation JS For sweetalert -->
+     <script src="assets/js/plugins/sweetalert/sweetalert.min.js"></script>
+     <script src="assets/js/plugins/sweetalert/sweetalert.active.js"></script>
+
 {{--     for toastr --}}
      <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
