@@ -14,6 +14,8 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async="" src="{{ asset('user_style/www.googletagmanager.com/gtag/js_93270489.js') }}"></script>
 
+
+
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() {
@@ -22,6 +24,9 @@
         gtag('js', new Date());
         gtag('config', 'UA-144098545-1');
     </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 </head>
 <body>

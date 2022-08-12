@@ -6,12 +6,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
      <meta charset="utf-8" />
      <meta http-equiv="x-ua-compatible" content="ie=edge" />
-     <title>Adomx - Responsive Bootstrap 4 Admin Template </title>
+     <title>PHOXEL - Admin Dashboard </title>
      <meta name="robots" content="noindex, follow" />
      <meta name="description" content="" />
      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
      <!-- Favicon -->
-     <link rel="shortcut icon" type="image/x-icon" href="{{  asset('admin_style/images/favicon.ico') }}" />
+     <link rel="shortcut icon" href=" {{ asset('user_style/img/favicon.png') }}" />
+{{--     <link rel="shortcut icon" type="image/x-icon" href="{{  asset('admin_style/images/favicon.ico') }}" />--}}
      <script src="https://kit.fontawesome.com/8390e63b26.js" crossorigin="anonymous"></script>
 
      <!-- CSS
@@ -154,6 +155,10 @@
          switch (type) {
             case 'info':
                 toastr.info("{{ Session::get('message') }}");
+                // toastr.clear()
+                // setTimeout(function () {
+                    @php session()->flush(); @endphp
+                // }, 3000);
                 break;
             case 'success':
                 toastr.success("{{ Session::get('message') }}");

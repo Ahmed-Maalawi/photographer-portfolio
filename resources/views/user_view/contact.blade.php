@@ -44,28 +44,31 @@
                 <div class="col-md-5 offset-md-2 animate-box" data-animate-effect="fadeInUp">
                     <div class="form-box">
                         <h5>Get in touch </h5>
-                        <form method="post" class="contact__form" action="mail.php">
+{{--                        contact__form--}}
+{{--                        action="{{ route('mail.submit') }}--}}
+                        <form method="post" id="contact-form" class="contact__form" action="http://127.0.0.1:8000/api/mail/submit">
+{{--                            @csrf--}}
                             <!-- Form message -->
                             <div class="row">
                                 <div class="col-12">
                                     <div class="alert alert-success contact__msg" style="display: none" role="alert">
-                                        Your message was sent ____________.
+                                        Your message was sent successfully.
                                     </div>
                                 </div>
                             </div>
                             <!-- Form elements -->
                             <div class="row">
                                 <div class="col-md-12 form-group">
-                                    <input name="name" type="text" placeholder="Your Name *" required="" />
+                                    <input name="name" id="name" type="text" placeholder="Your Name *" required=""/>
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <input name="email" type="email" placeholder="Your Email *" required="" />
+                                    <input name="email" type="email" placeholder="Your Email *" required=""/>
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <input name="phone" type="text" placeholder="Your Number *" required="" />
+                                    <input name="phone" id="phone" type="text" placeholder="Your Number *" required=""/>
                                 </div>
                                 <div class="col-md-12 form-group">
-                                    <input name="subject" type="text" placeholder="Subject *" required="" />
+                                    <input name="subject" type="text" placeholder="Subject *" required=""/>
                                 </div>
                                 <div class="col-md-12 form-group">
                                     <textarea name="message" id="message" cols="30" rows="4" placeholder="Message *" required=""></textarea>
@@ -154,7 +157,7 @@
                                     </div>
                                 </div>
                                 <div class="item">  <span class="quote">
-                                         <img src="img/quot.png" alt="" />
+                                         <img src="{{ asset('user_style/img/quot.png') }}" alt="" />
                                      </span>
                                     <p class="v-border">Photographers viverra tristique duis vitae dias the nesue niva aestan ateuene artines duruna setlie suscipe fermen. Quisque sed tellus man lorem nullam dururana tortor felis porta. </p>
                                     <div class="info">

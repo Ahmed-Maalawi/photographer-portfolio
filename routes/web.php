@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CollectionController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MemberController;
@@ -20,7 +21,8 @@ use App\Http\Controllers\AdminController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+//    return view('welcome');
+    return redirect()->route('user.home');
 });
 
 Route::group(['prefix'=> 'admin', 'middleware'=>['admin:admin']], function(){
@@ -55,6 +57,7 @@ Route::group(['prefix'=> 'admin', 'middleware'=>['admin:admin']], function(){
 
 //      ------------------------------------------    Image   routes  ---------------------------------------------------------------
         Route::get('/Add-Photos/{id}', [CollectionController::class, 'addPhotos'])->name('addPhotos');
+        Route::get('/delete-Photo/{id}', [CollectionController::class, 'deletePhoto'])->name('delete.photo');
         Route::post('/store-Photos', [ImageController::class, 'storeImage'])->name('storeImage');
         Route::get('/manage-image', [ImageController::class, 'displayImages'])->name('displayImages');
         Route::get('/active/{id}', [ImageController::class, 'Activate'])->name('image.Activate');
@@ -97,6 +100,7 @@ Route::get('about', [UserController::class, 'about'])->name('about');
 Route::get('contact', [UserController::class, 'contact'])->name('contact');
 Route::get('service', [UserController::class, 'service'])->name('service');
 Route::get('work', [UserController::class, 'work'])->name('work');
+//Route::post('mail/submit', [ContactController::class, 'submit'])->name('mail.submit');
 Route::get('/gallery/photos', [UserController::class, 'photos'])->name('photos');
 Route::get('/gallery/video', [UserController::class, 'work'])->name('work');
 

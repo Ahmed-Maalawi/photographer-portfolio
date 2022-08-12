@@ -60,7 +60,7 @@
                 <ul class="image-gallery">
                     @foreach($collection_img as $img)
                         <li>
-                            <a class="btn btn-danger absolute top-5 text-center" href=""><i class="fa-solid fa-xmark"></i></a>
+                            <a class="btn btn-danger absolute top-5 text-center" href="{{ route('delete.photo', $img->id) }}"><i class="fa-solid fa-xmark"></i></a>
                             <img src="{{ asset($img->img_path) }}" alt=""/>
                         </li>
                     @endforeach

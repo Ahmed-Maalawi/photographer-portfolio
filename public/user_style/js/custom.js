@@ -312,23 +312,8 @@ $(document).ready(function() {
     var form = $('.contact__form'),
         message = $('.contact__msg'),
         form_data;
-    // success function
-    function done_func(response) {
-        message.fadeIn().removeClass('alert-danger').addClass('alert-success');
-        message.text(response);
-        setTimeout(function () {
-            message.fadeOut();
-        }, 2000);
-        form.find('input:not([type="submit"]), textarea').val('');
-    }
-    // fail function
-    function fail_func(data) {
-        message.fadeIn().removeClass('alert-success').addClass('alert-success');
-        message.text(data.responseText);
-        setTimeout(function () {
-            message.fadeOut();
-        }, 2000);
-    }
+
+
     form.submit(function (e) {
         e.preventDefault();
         form_data = $(this).serialize();
@@ -340,3 +325,61 @@ $(document).ready(function() {
         .done(done_func)
         .fail(fail_func);
     });
+//    --------------------------------
+
+// fail function update
+// ---------------------------------
+function fail_func(response) {
+
+    message.fadeIn().removeClass('alert-success').addClass('alert-success');
+
+    var list = document.createElement("ul");
+
+    $.each(  response['responseJSON']['data'], function( i, item ) {
+
+        var newListItem = document.createElement("ul");
+        newListItem.innerText = item[0];
+        list.append( newListItem );
+
+    });
+
+    message.append(list);
+    setTimeout(function () {
+        message.fadeOut();
+    }, 10000);
+}
+
+
+// success function update
+// ---------------------------------
+function done_func(response) {
+
+    console.log(response);
+    message.fadeIn().removeClass('alert-danger').addClass('alert-success');
+    message.text(response);
+    setTimeout(function () {
+        message.fadeOut();
+    }, 2000);
+    form.find('input:not([type="submit"]), textarea').val('');
+}
+
+
+
+
+// success function
+// function done_func(response) {
+//     message.fadeIn().removeClass('alert-danger').addClass('alert-success');
+//     message.text(response);
+//     setTimeout(function () {
+//         message.fadeOut();
+//     }, 2000);
+//     form.find('input:not([type="submit"]), textarea').val('');
+// }
+// fail function
+// function fail_func(data) {
+//     message.fadeIn().removeClass('alert-success').addClass('alert-success');
+//     message.text(data.responseText);
+//     setTimeout(function () {
+//         message.fadeOut();
+//     }, 2000);
+// }

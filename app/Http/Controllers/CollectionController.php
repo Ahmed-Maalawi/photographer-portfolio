@@ -74,6 +74,11 @@ class CollectionController extends Controller
             'updated_at' => Carbon::now(),
         ]);
 
+        $images = IMG::where('collection_id', $id)->update([
+            'status' => true,
+            'updated_at' => Carbon::now(),
+        ]);
+
         $notification = array(
             'message' => 'Collection Active Successfully',
             'alert-type' => 'info',
@@ -88,6 +93,12 @@ class CollectionController extends Controller
             'status' => false,
             'updated_at' => Carbon::now(),
         ]);
+
+        $images = IMG::where('collection_id', $id)->update([
+            'status' => false,
+            'updated_at' => Carbon::now(),
+        ]);
+
 
         $notification = array(
             'message' => 'Collection Dis-Active Successfully',
@@ -166,9 +177,21 @@ class CollectionController extends Controller
        return view('admin_view.collection.add_photos', compact('collection', 'collection_img'));
     }
 
-//    public function addPhotos()
-//    {
-//        $collection = Collection::orderBy('name','ACED')->get();
-//        return view('admin_view.collection.add_photos', compact('collection'));
-//    }
+    public function deletePhoto($id)
+    {
+
+        $img = IMG::findOrFail($id);
+
+        $path_img = $img->img_path;
+
+        unlink($path_img);
+
+        $img->delete();
+
+        $notification = array(
+            'message' => 'Image Deleted Successfully',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
+    }
 }

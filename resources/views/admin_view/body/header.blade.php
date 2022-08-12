@@ -4,9 +4,9 @@
 
             <!-- Header Logo (Header Left) Start -->
             <div class="header-logo col-auto">
-                <a href="index.html">
-                    <img src="{{ asset('admin_style/images/logo/logo.png') }} " alt="" />
-                    <img src="{{ asset('admin_style/images/logo/logo-light.png') }} " class="logo-light" alt="" />
+                <a href="{{ route('displayImages') }}">
+                    <img src="{{ asset('user_style/img/logo.png') }}" alt="" />
+                    <img src="{{ asset('user_style/img/logo.png') }}" class="logo-light" alt="" />
                 </a>
             </div><!-- Header Logo (Header Left) End -->
 
