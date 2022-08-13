@@ -12,11 +12,18 @@ class ContactController extends Controller
     public function submit(ContactRequest $request)
     {
 
+        $info = [
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'phone' => $request['phone'],
+            'subject' => $request['subject'],
+            'message' => $request['message'],
+        ];
 
 
-        return "Your message was sent successfully.";
-//        Mail::to('ahmedelmaalawi@gmail.com')
-//            ->send(new ContactMail($validated['name'],$validated['email'],$validated['phone'],$validated['subject'],$validated['message']));
+        Mail::to('essame@photo.com')
+            ->send(new ContactMail($info));
 //        return ['success' => true];
+        return "Your message was sent successfully.";
     }
 }

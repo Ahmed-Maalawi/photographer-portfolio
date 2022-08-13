@@ -6,6 +6,8 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\user\UserController;
+use App\Mail\MyTestMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 
@@ -103,4 +105,18 @@ Route::get('work', [UserController::class, 'work'])->name('work');
 //Route::post('mail/submit', [ContactController::class, 'submit'])->name('mail.submit');
 Route::get('/gallery/photos', [UserController::class, 'photos'])->name('photos');
 Route::get('/gallery/video', [UserController::class, 'work'])->name('work');
+
+
+
+//Route::get('send-mail', function () {
+//
+//    $details = [
+//        'title' => 'Mail from ItSolutionStuff.com',
+//        'body' => 'This is for testing email using smtp'
+//    ];
+//
+//    Mail::to('your_receiver_email@gmail.com')->send(new MyTestMail($details));
+//
+//    dd("Email is Sent.");
+//});
 

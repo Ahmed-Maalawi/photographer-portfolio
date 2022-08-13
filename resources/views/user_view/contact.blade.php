@@ -44,11 +44,7 @@
                 <div class="col-md-5 offset-md-2 animate-box" data-animate-effect="fadeInUp">
                     <div class="form-box">
                         <h5>Get in touch </h5>
-{{--                        contact__form--}}
-{{--                        action="{{ route('mail.submit') }}--}}
-                        <form method="post" id="contact-form" class="contact__form" action="http://127.0.0.1:8000/api/mail/submit">
-{{--                            @csrf--}}
-                            <!-- Form message -->
+                        <form method="POST" id="contact-form" class="contact__form" action="http://127.0.0.1:8000/api/mail/submit">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="alert alert-success contact__msg" style="display: none" role="alert">
