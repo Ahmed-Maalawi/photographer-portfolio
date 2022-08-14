@@ -8,12 +8,13 @@
                     <p>Sign up for our monthly newsletter for the latest news & articles </p>
                 </div>
                 <div class="col-md-6 widget-area">
-                    <form id="subscribe-form" class="newsletter-form" method="post" action="#" data-mailchimp="true">
+                    <form id="subscribe-form" class="newsletter-form" method="post" data-mailchimp="true">
                         <div class="mailchimp-inputbox clearfix" id="subscribe-content">
                             <p>
-                                <input type="email" name="email" placeholder="Enter Your Email" required="" />
+                                <input type="email" name="email" placeholder="Enter Your Email" required=""/>
                             </p>
                             <p>
+{{--                                <input type="submit" value="Subscribe Now " class="submit ttm-btn ttm-btn-size-md ttm-btn-shape-squar ttm-btn-style-fill ttm-btn-color-skincolor">--}}
                                 <button class="submit ttm-btn ttm-btn-size-md ttm-btn-shape-squar ttm-btn-style-fill ttm-btn-color-skincolor" type="submit">Subscribe Now </button>
                             </p>
                         </div>

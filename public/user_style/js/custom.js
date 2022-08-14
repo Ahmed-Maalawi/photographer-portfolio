@@ -354,7 +354,6 @@ function fail_func(response) {
 // ---------------------------------
 function done_func(response) {
 
-    console.log(response);
     message.fadeIn().removeClass('alert-danger').addClass('alert-success');
     message.text(response);
     setTimeout(function () {
@@ -383,3 +382,57 @@ function done_func(response) {
 //         message.fadeOut();
 //     }, 2000);
 // }
+
+
+//------------------------------------------------
+// Contact Form
+var formSubscribe = $('#subscribe-form'),
+    messageSubscribe = $('#subscribe-msg'),
+    form_data_subscribe;
+
+
+formSubscribe.submit(function (e) {
+    e.preventDefault();
+    form_data_subscribe = $(this).serialize();
+    $.ajax({
+        type: 'POST',
+        url: 'http://127.0.0.1:8000/api/subscribe/submit',
+        data: form_data_subscribe
+    })
+        .done(subscribe_success)
+        .fail(subscribe_fail);
+});
+
+function subscribe_success(response) {
+
+    console.log(response);
+
+    messageSubscribe.fadeIn().removeClass('alert-danger').addClass('alert-success');
+    messageSubscribe.text(response);
+    setTimeout(function () {
+        messageSubscribe.fadeOut();
+    }, 10000);
+    formSubscribe.find('input:not([type="submit"]), textarea').val('');
+}
+
+
+function subscribe_fail(response) {
+    console.log(response);
+    // messageSubscribe.fadeIn().removeClass('alert-success').addClass('alert-success');
+    //
+    //
+    // var list = document.createElement("ul");
+    //
+    // $.each(  response['responseJSON']['data'], function( i, item ) {
+    //
+    //     var newListItem = document.createElement("ul");
+    //     newListItem.innerText = item[0];
+    //     list.append( newListItem );
+    //
+    // });
+    // // messageSubscribe.fadeIn();
+    // messageSubscribe.append(list);
+    // setTimeout(function () {
+    //     messageSubscribe.fadeOut();
+    // }, 10000);
+}
