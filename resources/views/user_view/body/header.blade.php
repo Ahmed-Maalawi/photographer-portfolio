@@ -16,11 +16,11 @@
                 <li class="nav-item"><a class="nav-link {{ ($route == 'user.home')? 'active' : ''}}" href="{{ route('user.home') }}">Home </a></li>
                 <li class="nav-item"><a class="nav-link {{ ($route == 'about')? 'active' : ''}}" href="{{ route('about') }}">About </a></li>
                 <li class="nav-item"><a class="nav-link {{ ($route == 'service')? 'active' : ''}}" href="{{ route('service') }}">Services </a></li>
-                <li class="nav-item"><a class="nav-link {{ ($route == 'work')? 'active' : ''}}" href="{{ route('work') }}">Works </a></li>
+                <li class="nav-item"><a class="nav-link {{ ($route == 'work' || $route == 'work.photo.view')? 'active' : ''}}" href="{{ route('work') }}">Works </a></li>
                 <li class="nav-item dropdown">  <span class="nav-link {{ ($prefix == '/gallery')? 'active' : ''}}"> Gallery  <i class="ti-angle-down"></i></span>
                     <ul class="dropdown-menu last">
-                        <li class="dropdown-item" ><a href="{{ route('photos') }}">My Photos </a></li>
-                        <li class="dropdown-item"><a href="gallery-02.html">My Videos </a></li>
+                        <li class="dropdown-item" ><a href="{{ route('gallery.photos') }}">My Photos </a></li>
+                        <li class="dropdown-item"><a href="{{ route('gallery.video') }}">My Videos </a></li>
 {{--                        <li class="dropdown-item"><a href="video-gallery.html">Gallery 03 </a></li>--}}
                         <!--
                        <li class="dropdown-item"><span>Dropdown 2 <i class="ti-angle-right"></i></span>

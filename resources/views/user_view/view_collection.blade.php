@@ -3,13 +3,13 @@
 @section('user')
 
     <!-- Header Banner -->
-    <section class="banner-header banner-img banner-img-top section-padding valign bg-img bg-fixed banner-overlay" data-overlay-darkgray="1" data-background="{{ asset('user_style/img/banner/5.jpg') }}">
+    <section class="banner-header banner-img banner-img-top section-padding valign bg-img bg-fixed banner-overlay" data-overlay-darkgray="1" data-background="{{ asset($collection->img_path) }}">
         <div class="container">
             <div class="row">
                 <div class="col-md-5">
-                    <h1>My works </h1>
+                    <h1>{{ $collection->name }} </h1>
                     <hr class="border-1" />
-                    <p>Quisque sed tellus lorem. Nullam bibendum seman tortor works porta felis porta the quis antearas miss viventa. </p>
+                    <p>{{ $collection->description }} </p>
                 </div>
             </div>
         </div>
@@ -22,16 +22,16 @@
                     <div class="portfolio-item-wrapp">
 
 
-                        @foreach($collection as $item)
+                        @foreach($photos as $photo)
                             <div class="portfolio-item">
                                 <div class="work-masonry-wrapper">
-                                    <a href="{{ route('work.photo.view', $item->id) }}" class="work-masonry-item-img-link">  <img src="{{ asset($item->img_path) }}" alt="" />
+                                    <div class="work-masonry-item-img-link">  <img src="{{ asset($photo->img_path) }}" alt="" />
                                         <div class="work-masonry-item-img"></div>
-                                        <div class="work-masonry-item-content">
-                                            <div class="work-masonry-item-category">{{ $item->name }} </div>
-                                            <h4 class="work-masonry-item-title">{{ $item->description }}</h4>
-                                        </div>
-                                    </a>
+{{--                                        <div class="work-masonry-item-content">--}}
+{{--                                            <div class="work-masonry-item-category">{{ $photo->name }} </div>--}}
+{{--                                            <h4 class="work-masonry-item-title">{{ $photo->description }}</h4>--}}
+{{--                                        </div>--}}
+                                    </div>
                                 </div>
                             </div>
                         @endforeach
@@ -39,13 +39,13 @@
 
                         <div class="portfolio-item">
                             <div class="work-masonry-wrapper">
-                                <a href="project-page.html" class="work-masonry-item-img-link">  <img src="{{ asset('user_style/img/works/w2.jpg') }}" alt="" />
+                                <div href="" class="work-masonry-item-img-link">  <img src="{{ asset('user_style/img/works/w2.jpg') }}" alt="" />
                                     <div class="work-masonry-item-img"></div>
                                     <div class="work-masonry-item-content">
                                         <div class="work-masonry-item-category">Wedding </div>
                                         <h4 class="work-masonry-item-title">Quisue sen duru martin </h4>
                                     </div>
-                                </a>
+                                </div>
                             </div>
                         </div>
                     </div>

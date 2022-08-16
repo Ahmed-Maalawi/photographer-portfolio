@@ -21,6 +21,7 @@ use App\Http\Controllers\AdminController;
 |
 */
 
+//-----------   default route => reload
 Route::get('/', function () {
 //    return view('welcome');
     return redirect()->route('user.home');
@@ -31,22 +32,24 @@ Route::get('contact', [UserController::class, 'contact'])->name('contact');
 Route::get('service', [UserController::class, 'service'])->name('service');
 Route::get('work', [UserController::class, 'work'])->name('work');
 //Route::post('mail/submit', [ContactController::class, 'submit'])->name('mail.submit');
-Route::get('/gallery/photos', [UserController::class, 'photos'])->name('photos');
-Route::get('/gallery/video', [UserController::class, 'work'])->name('work');
+Route::get('/gallery/photos', [UserController::class, 'photos'])->name('gallery.photos');
+Route::get('/gallery/video', [UserController::class, 'work'])->name('gallery.video');
+Route::get('/work/collection/view/{id}', [UserController::class, 'view_collection'])->name('work.photo.view');
 
 
+//Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
+//    return view('admin_view.index');
+//})->name('admin.dashboard');
 
-Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
-    return view('admin_view.index');
-})->name('admin.dashboard');
-
+//---------------   admin login routes  ---------------------------------
 Route::group(['prefix'=> 'admin', 'middleware'=>['admin:admin']], function(){
     Route::get('/login', [AdminController::class, 'loginForm'])->name('admin.loginform');
     Route::post('/login',[AdminController::class, 'store'])->name('admin.login');
 });
 
-
 Route::group(['prefix'=> 'admin', 'middleware' => ['auth:sanctum,admin', 'verified']], function(){
+
+    Route::get('/admin/dashboard', function () {return view('admin_view.index');})->name('admin.dashboard');       // admin dashboard route
 
     Route::get('/logout',[AdminController::class, 'destroy'])->name('admin.logout');
 
@@ -59,8 +62,6 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['auth:sanctum,admin', 'verifi
         Route::get('/dis-active-member/{id}', [MemberController::class,'disActiveMember'])->name('disActive.member');
         Route::get('/delete-member/{id}', [MemberController::class,'delete'])->name('delete.member');
     });
-
-
 
 
     Route::group(['prefix' => 'gallery'], function ()

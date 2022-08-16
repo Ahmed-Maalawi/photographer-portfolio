@@ -36,9 +36,12 @@ class UserController extends Controller
     {
         return view('user_view.services');
     }
+
     public function work()
     {
-        return view('user_view.work');
+        $collection = Collection::where('status', true)->get();
+
+        return view('user_view.work', compact('collection'));
     }
 
     public function photos()
@@ -46,5 +49,19 @@ class UserController extends Controller
         $collections = Collection::where('status', true)->orderBy('name', 'ASC')->get();
         $images = Image::where('status', true)->latest()->get();
         return view('user_view.gallery.photos', compact('images', 'collections'));
+    }
+
+    public function view_collection($id)
+    {
+
+        $collection = Collection::findOrFail($id);
+
+        $photos = Image::where(function ($query) {
+            $query->where('status', '=', true);
+        })->where(function ($query) use ($id){
+            $query->where('collection_id', '=', $id);
+        })->get(); //'status', true, 'collection_id', $id
+
+        return view('user_view.view_collection', compact('collection', 'photos'));
     }
 }
