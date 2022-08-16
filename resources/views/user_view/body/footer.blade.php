@@ -91,10 +91,10 @@
                 <div class="col-md-4">
                     <div class="social-icons">
                         <ul class="list-inline">
-                            <li><a href="#"><i class="ti-facebook"></i></a></li>
-                            <li><a href="#"><i class="ti-twitter"></i></a></li>
-                            <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                            <li><a href="#"><i class="ti-dribbble"></i></a></li>
+                            <li title="facebook"><a href="#"><i class="ti-facebook"></i></a></li>
+                            <li title="twitter"><a href="#"><i class="ti-twitter"></i></a></li>
+                            <li title="linkedin"><a href="#"><i class="ti-linkedin"></i></a></li>
+                            <li title="instagram"><a href="#"><i class="ti-instagram"></i></a></li>
                         </ul>
                     </div>
                 </div>

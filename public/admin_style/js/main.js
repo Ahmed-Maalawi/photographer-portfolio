@@ -76,7 +76,7 @@ $sideHeaderToggle.on('click', function(){
 $sideHeaderClose.on('click', function(){
     $sideHeader.removeClass('show').addClass('hide');
 });
-    
+
 /*--
     Side Header Menu
 -----------------------------------*/
@@ -128,7 +128,7 @@ tippy('.tippy, [data-tippy-content], [data-tooltip]', {
     boundary: 'window',
 });
 
-/*-- 
+/*--
     Selectable Table
 -----------------------------------*/
 function tableSelectable() {
@@ -157,8 +157,8 @@ function tableSelectable() {
     });
 }
 tableSelectable();
-    
-/*-- 
+
+/*--
     To Do List
 -----------------------------------*/
 function todoList() {
@@ -213,7 +213,7 @@ function todoList() {
     });
 }
 todoList();
-    
+
 /*--
     Chat Contact
 -----------------------------------*/
@@ -236,15 +236,15 @@ function resize() {
 $window.on('resize', function(){
     resize();
 });
-    
-    
+
+
 function customizer() {
     var $cusHtml = '<div class="customizer-wrapper">';
     $cusHtml += '<a href="#" class="customizer-toggle"><i class="ti-settings"></i></a>';
     $cusHtml += '<div class="inner custom-scroll">';
     $cusHtml += '<div class="dark-rtl-setting">';
     $cusHtml += '<label class="adomx-switch primary toggle-dark"><input type="checkbox"> <i class="lever"></i> <span class="text">Dark Version</span></label>';
-    $cusHtml += '<label class="adomx-switch primary toggle-rtl"><input type="checkbox" checked> <i class="lever"></i> <span class="text">RTL Version</span></label>';
+    $cusHtml += '<label class="adomx-switch primary toggle-rtl"><input type="checkbox"> <i class="lever"></i> <span class="text">RTL Version</span></label>';
     $cusHtml += '</div>';
     $cusHtml += '<ul class="nav mb-20">';
     $cusHtml += '<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#sidebar-setting">Sidebar</a></li>';
@@ -294,9 +294,9 @@ function customizer() {
     $cusHtml += '</div>';
     $cusHtml += '</div>';
     $cusHtml += '</div>';
-    
+
     $body.prepend($cusHtml)
-    
+
     $window.on('load', function(){
         var customizerWrapper = $('.customizer-wrapper'),
             customizerToggle = $('.customizer-toggle'),
@@ -309,7 +309,26 @@ function customizer() {
             e.preventDefault();
             customizerWrapper.toggleClass('open');
         });
-        
+
+
+        //  loading display mode
+        //----------------------------
+        var mode = localStorage.getItem('mode');
+        if(mode == 'dark') {
+            $body.addClass('skin-dark');
+        } else {
+            $body.removeClass('skin-dark');
+        }
+
+        //  loading web direction mode
+        //----------------------------
+        var siteDirection = localStorage.getItem('dir');
+        if(siteDirection == 'rtl') {
+            $body.attr('dir', 'rtl');
+        } else {
+            $body.removeAttr('dir', 'rtl');
+        }
+
         /*Dark & RTL*/
         toggleDARK.on('click', function(){
             var $this = $(this);
@@ -321,19 +340,24 @@ function customizer() {
                 $body.removeClass (function (index, className) {
                     return (className.match (/\bside-header-\S+/g) || []).join(' ');
                 });
+
+                localStorage.setItem('mode', 'dark');
             } else if(!$this.find('input[type="checkbox"]').prop('checked')) {
                 $body.removeClass('skin-dark');
+                localStorage.setItem('mode', 'light');
             }
         });
         toggleRTL.on('click', function(){
             var $this = $(this);
             if($this.find('input[type="checkbox"]').prop('checked')) {
                 $body.attr('dir', 'rtl');
+                localStorage.setItem('dir', 'rtl');
             } else if(!$this.find('input[type="checkbox"]').prop('checked')) {
                 $body.removeAttr('dir', 'rtl');
+                localStorage.setItem('dir', '');
             }
         });
-        
+
         /*Side Header & Top Header*/
         customRadioNotColor.on('click', function(e){
             e.preventDefault();
@@ -363,16 +387,16 @@ function customizer() {
             $('#cus-style').attr('href', 'assets/css/style-'+$color+'.css');
         });
     });
-    
+
 }
 customizer();
 
 /*--
     Custom Scrollbar (Perfect Scrollbar)
------------------------------------*/ 
+-----------------------------------*/
 $('.custom-scroll').each( function() {
     var ps = new PerfectScrollbar($(this)[0]);
 });
-    
+
 })(jQuery);
 

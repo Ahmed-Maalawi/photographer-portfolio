@@ -6,7 +6,6 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\user\UserController;
-use App\Mail\MyTestMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
@@ -26,11 +25,29 @@ Route::get('/', function () {
 //    return view('welcome');
     return redirect()->route('user.home');
 });
+Route::get('home', [UserController::class, 'index'])->name('user.home');
+Route::get('about', [UserController::class, 'about'])->name('about');
+Route::get('contact', [UserController::class, 'contact'])->name('contact');
+Route::get('service', [UserController::class, 'service'])->name('service');
+Route::get('work', [UserController::class, 'work'])->name('work');
+//Route::post('mail/submit', [ContactController::class, 'submit'])->name('mail.submit');
+Route::get('/gallery/photos', [UserController::class, 'photos'])->name('photos');
+Route::get('/gallery/video', [UserController::class, 'work'])->name('work');
+
+
+
+Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
+    return view('admin_view.index');
+})->name('admin.dashboard');
 
 Route::group(['prefix'=> 'admin', 'middleware'=>['admin:admin']], function(){
-	Route::get('/login', [AdminController::class, 'loginForm']);
-	Route::post('/login',[AdminController::class, 'store'])->name('admin.login');
-    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+    Route::get('/login', [AdminController::class, 'loginForm'])->name('admin.loginform');
+    Route::post('/login',[AdminController::class, 'store'])->name('admin.login');
+});
+
+
+Route::group(['prefix'=> 'admin', 'middleware' => ['auth:sanctum,admin', 'verified']], function(){
+
     Route::get('/logout',[AdminController::class, 'destroy'])->name('admin.logout');
 
     Route::group(['prefix' => 'Our-Team'], function() {
@@ -82,41 +99,7 @@ Route::group(['prefix'=> 'admin', 'middleware'=>['admin:admin']], function(){
     });
 });
 
-
-
-
-// Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
-//     // return view('dashboard');
-//     return view('admin_view.index');
-// })->name('dashboard');
-
-
-
-// Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
-//     return view('dashboard');
-// })->name('dashboard');
-
-
-Route::get('home', [UserController::class, 'index'])->name('user.home');
-Route::get('about', [UserController::class, 'about'])->name('about');
-Route::get('contact', [UserController::class, 'contact'])->name('contact');
-Route::get('service', [UserController::class, 'service'])->name('service');
-Route::get('work', [UserController::class, 'work'])->name('work');
-//Route::post('mail/submit', [ContactController::class, 'submit'])->name('mail.submit');
-Route::get('/gallery/photos', [UserController::class, 'photos'])->name('photos');
-Route::get('/gallery/video', [UserController::class, 'work'])->name('work');
-
-
-
-//Route::get('send-mail', function () {
-//
-//    $details = [
-//        'title' => 'Mail from ItSolutionStuff.com',
-//        'body' => 'This is for testing email using smtp'
-//    ];
-//
-//    Mail::to('your_receiver_email@gmail.com')->send(new MyTestMail($details));
-//
-//    dd("Email is Sent.");
-//});
+Route::get('login', function () {
+    return view('errors.404');
+});
 

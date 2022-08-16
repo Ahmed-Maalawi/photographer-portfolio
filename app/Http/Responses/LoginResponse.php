@@ -16,6 +16,6 @@ class LoginResponse implements LoginResponseContract
     {
         return $request->wantsJson()
                     ? response()->json(['two_factor' => false])
-                    : redirect()->intended('admin/gallery/manage-image');
+                    : redirect()->intended('admin/dashboard');
     }
 }
