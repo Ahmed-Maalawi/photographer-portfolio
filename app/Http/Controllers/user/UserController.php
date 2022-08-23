@@ -7,6 +7,7 @@ use App\Models\Collection;
 use App\Models\Feedback;
 use App\Models\Image;
 use App\Models\Member;
+use App\Models\post;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -16,9 +17,10 @@ class UserController extends Controller
 
         $collections = Collection::all();
         $photos = Image::where('status', true)->get();
+        $news = post::where('status', true)->get();
         $feedback = Feedback::where('status', true)->get();
 
-        return view('user_view.index', compact('collections', 'photos', 'feedback'));
+        return view('user_view.index', compact('collections', 'photos', 'feedback', 'news'));
     }
 
     public function about()

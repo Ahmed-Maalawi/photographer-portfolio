@@ -41,7 +41,7 @@
                             <li><a href="{{ route('about') }}">About </a></li>
                             <li><a href="{{ route('service') }}">Services </a></li>
                             <li><a href="{{ route('work') }}">Works </a></li>
-{{--                            <li><a href="{{ route('') }}">Blog </a></li>--}}
+                            <li><a href="{{ route('blog.index') }}">Blog </a></li>
                         </ul>
                     </div>
                 </div>

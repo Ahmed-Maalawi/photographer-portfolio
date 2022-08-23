@@ -142,6 +142,13 @@
      <script src="{{ asset('admin_style/js/plugins/dropify/dropify.active.js') }}"></script>
 
 
+     <!-- Plugins & Activation JS For form editor -->
+     <script src="{{ asset('admin_style/js/plugins/summernote/summernote-bs4.min.js') }}"></script>
+     <script src="{{ asset('admin_style/js/plugins/summernote/summernote.active.js') }}"></script>
+     <script src="{{ asset('admin_style/js/plugins/quill/quill.min.js') }}"></script>
+     <script src="{{ asset('admin_style/js/plugins/quill/quill.active.js') }}"></script>
+
+
      <!-- Plugins & Activation JS For sweetalert -->
      <script src="assets/js/plugins/sweetalert/sweetalert.min.js"></script>
      <script src="assets/js/plugins/sweetalert/sweetalert.active.js"></script>

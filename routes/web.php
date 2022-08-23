@@ -5,6 +5,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\user\UserController;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
@@ -35,11 +36,16 @@ Route::get('work', [UserController::class, 'work'])->name('work');
 Route::get('/gallery/photos', [UserController::class, 'photos'])->name('gallery.photos');
 Route::get('/gallery/video', [UserController::class, 'work'])->name('gallery.video');
 Route::get('/work/collection/view/{id}', [UserController::class, 'view_collection'])->name('work.photo.view');
+Route::group(['prefix' => 'blog'], function() {
+    Route::get('/posts/all', [PostController::class, 'allPosts'])->name('blog.index');
+   Route::get('/view_post/{id}', [PostController::class, 'show'])->name('blog.view.post');
+
+});
 
 
-//Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
-//    return view('admin_view.index');
-//})->name('admin.dashboard');
+Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
+    return view('admin_view.index');
+})->name('admin.dashboard');
 
 //---------------   admin login routes  ---------------------------------
 Route::group(['prefix'=> 'admin', 'middleware'=>['admin:admin']], function(){
@@ -49,7 +55,7 @@ Route::group(['prefix'=> 'admin', 'middleware'=>['admin:admin']], function(){
 
 Route::group(['prefix'=> 'admin', 'middleware' => ['auth:sanctum,admin', 'verified']], function(){
 
-    Route::get('/admin/dashboard', function () {return view('admin_view.index');})->name('admin.dashboard');       // admin dashboard route
+//    Route::get('/admin/dashboard', function () {return view('admin_view.index');})->name('admin.dashboard');       // admin dashboard route
 
     Route::get('/logout',[AdminController::class, 'destroy'])->name('admin.logout');
 
@@ -96,6 +102,19 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['auth:sanctum,admin', 'verifi
        Route::get('/delete/{id}', [FeedbackController::class, 'deleteFeedback'])->name('delete.feedback');
        Route::get('/disActive/{id}', [FeedbackController::class, 'disActive'])->name('disActive.feedback');
        Route::get('/Activate/{id}', [FeedbackController::class, 'Activate'])->name('Activate.feedback');
+
+    });
+
+    Route::group(['prefix' => 'news'], function(){
+
+       Route::get('/all', [PostController::class, 'index'])->name('news.index');
+       Route::get('/create', [PostController::class, 'create'])->name('news.create');
+       Route::post('/store', [PostController::class, 'store'])->name('news.store');
+       Route::get('/edit/{id}', [PostController::class, 'edit'])->name('news.edit');
+       Route::post('/update/{id}', [PostController::class, 'update'])->name('news.update');
+       Route::get('/delete/{id}', [PostController::class, 'destroy'])->name('news.destroy');
+       Route::get('/activated/{id}', [PostController::class, 'activatedPost'])->name('news.activated');
+       Route::get('/dis-active/{id}', [PostController::class, 'disActivePost'])->name('news.dis-active');
 
     });
 });

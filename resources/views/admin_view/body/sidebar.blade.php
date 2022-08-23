@@ -29,6 +29,14 @@
 
                 <li class="{{ ($route == 'team')? 'active' : ''}}"><a href="{{ route('team') }}"><i class="fa-solid fa-people-group"></i>  <span>Team Members </span></a></li>
 
+
+                <li class="has-sub-menu {{ ($prefix == 'admin/news')? 'active': ''}}"><a href="#"><i class="fa-solid fa-paperclip"></i>  <span>News </span></a>
+                    <ul class="side-header-sub-menu">
+                        <li class="{{ ($route == 'news.all')? 'active' : ''}}"><a href="{{ route('news.index') }}"><span>Manage Posts </span></a></li>
+                        <li class="{{ ($route == 'news.create')? 'active' : ''}}"><a href="{{ route('news.create') }}"><span>Add Post </span></a></li>
+                    </ul>
+                </li>
+
             </ul>
         </nav>
 

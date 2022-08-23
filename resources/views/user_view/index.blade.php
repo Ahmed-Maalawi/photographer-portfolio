@@ -139,6 +139,27 @@
             </div>
             <div class="row">
                 <div class="col-md-12 owl-carousel owl-theme">
+                    @foreach($news as $index => $post)
+                        <div class="news {{ ($index % 2)? 'left' : ''}}">
+                            <figure><img src="{{ asset($post['post_img']) }}" alt="" class="img-fluid" /></figure>
+                            <div class="caption">
+                                <h6>{{ $post['tag'] }} </h6>
+                                <h4><a href="">{{ $post['title'] }} </a></h4>
+{{--                                {!!  !!}--}}
+{{--                                <p>{!! Str::limit({!!$post['content']!!}, 30); !!}</p>--}}
+
+                                <p>{!! \Illuminate\Support\Str::words($post['content'], 4) !!}</p>
+
+
+                                <hr class="border-2" />
+                                <div class="info-wrapper">
+                                    <div class="more"><a href="{{ route('blog.view.post', $post['id']) }}" class="link-btn" tabindex="0">Read Post </a></div>
+                                    <div class="date">{{ $post['created_at']->format('D, d M Y h:i A')}} </div>
+{{--                                    //20 December 2022--}}
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                     <div class="news">
                         <figure><img src="{{ asset('user_style/img/blog/4.jpeg') }}" alt="" class="img-fluid" /></figure>
                         <div class="caption">

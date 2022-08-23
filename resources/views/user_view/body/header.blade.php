@@ -32,7 +32,7 @@
                        -->
                     </ul>
                 </li>
-{{--                <li class="nav-item"><a class="nav-link" href="blog.html">Blog </a></li>--}}
+                <li class="nav-item"><a class="nav-link {{ ($route == 'blog.index')? 'active' : ''}}" href="{{ route('blog.index') }}">Blog </a></li>
                 <li class="nav-item"><a class="nav-link {{ ($route == 'contact')? 'active' : ''}}" href="{{ route('contact') }}">Contact </a></li>
             </ul>
         </div>
