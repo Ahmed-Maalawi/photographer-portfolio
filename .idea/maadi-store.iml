@@ -128,6 +128,15 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/mockery/mockery" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/intervention/image" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/brian2694/laravel-toastr" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/http-factory" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/nette/schema" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/nette/utils" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/league/config" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/dflydev/dot-access-data" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/serializable-closure" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/yaml" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/maximebf/debugbar" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/barryvdh/laravel-debugbar" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

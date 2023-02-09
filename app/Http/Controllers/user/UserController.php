@@ -15,12 +15,12 @@ class UserController extends Controller
     public function index()
     {
 
-        $collections = Collection::all();
-        $photos = Image::where('status', true)->get();
+//        $collections = Collection::all();
+        $photos = Image::latest()->where('status', true)->take(20)->get();
         $news = post::where('status', true)->get();
         $feedback = Feedback::where('status', true)->get();
-
-        return view('user_view.index', compact('collections', 'photos', 'feedback', 'news'));
+//        $photos [] = shuffle($photos);
+        return view('user_view.index', compact( 'photos', 'feedback', 'news'));
     }
 
     public function about()
@@ -41,9 +41,9 @@ class UserController extends Controller
 
     public function work()
     {
-        $collection = Collection::where('status', true)->get();
+        $collections = Collection::where('status', true)->get();
 
-        return view('user_view.work', compact('collection'));
+        return view('user_view.work', compact('collections'));
     }
 
     public function photos()

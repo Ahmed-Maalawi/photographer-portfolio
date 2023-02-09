@@ -57,19 +57,16 @@
 
             <!--Order Details Customer Information Start-->
             <div class="col-12 mb-30">
-                <ul class="image-gallery">
+                <div class="masonry">
                     @foreach($collection_img as $img)
-                        <li>
-                            <a class="btn btn-danger absolute top-5 text-center" href="{{ route('delete.photo', $img->id) }}"><i class="fa-solid fa-xmark"></i></a>
-                            <img src="{{ asset($img->img_path) }}" alt=""/>
-                        </li>
+                        <div class="item">
+                            <a class="btn  btn-danger absolute top-5 text-center w-100" href="{{ route('delete.photo', $img->id) }}"><i class="fa-solid fa-xmark"></i></a>
+                            <img class="img-fluid" src="{{ asset($img->img_path) }}" alt=""/>
+                        </div>
                     @endforeach
-                </ul>
+                </div>
             </div>
             <!--Order Details List End-->
-
         </div>
-
-
 
 @endsection

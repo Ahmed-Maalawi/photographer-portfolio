@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5">
-                    <h1>Gallery 01 </h1>
+                    <h1>Gallery</h1>
                     <hr class="border-1" />
                     <p>Fusceler mollis augue sit amet hendrerit vestibulum uisteyer the miss martine venenatis nito lacus. </p>
                 </div>
@@ -21,7 +21,7 @@
                     <ul class="gallery-filter">
                         <li class="active" data-filter="*">All </li>
                         @foreach($collections as $item)
-                        <li class="" data-filter=".{{ $item->name }}">{{$item->name}} </li>
+                            <li class="" data-filter=".{{ $item->id }}">{{ $item->name }} </li>
                         @endforeach
 
 {{--                        <li data-filter=".personal">Personal </li>--}}
@@ -36,7 +36,7 @@
             <div class="row gallery-items">
                 <div class="masonry-items">
                     @foreach($images as $img)
-                        <div class="col-md-4 gallery-masonry-wrapper single-item {{ $img['collection']['name'] }}">
+                        <div class="col-md-4 gallery-masonry-wrapper single-item {{ $img['collection']['id'] }}">
                             <a href="{{ asset($img->img_path) }}" title="" class="gallery-masonry-item-img-link img-zoom">
                                 <div class="gallery-box">
                                     <div class="gallery-img">  <img src="{{ asset($img->img_path) }}" class="img-fluid mx-auto d-block" alt="" />  </div>

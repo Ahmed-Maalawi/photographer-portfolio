@@ -221,17 +221,18 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5 text-left">
-                    <h2 class="section-title"><span>My Works </span></h2>
+                    <h2 class="section-title"><span>Recently Added</span></h2>
                     <hr class="border-2" />
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12 text-left">
-                    <ul class="gallery-filter">
-                        <li class="active" data-filter="*">All </li>
+{{--            <div class="row">--}}
+{{--                <div class="col-md-12 text-left">--}}
+{{--                    <ul class="gallery-filter">--}}
+{{--                        <li class="active" data-filter="*">All </li>--}}
 
-                        @foreach($collections as $collection) <li data-filter=".{{ $collection->name }}">{{ $collection->name }} </li>
-                        @endforeach
+{{--                        @foreach($collections as $collection)--}}
+{{--                            <li data-filter=".{{ $collection->name }}">{{ $collection->name }} </li>--}}
+{{--                        @endforeach--}}
 
 
 {{--                        <li data-filter=".personal">Personal </li>--}}
@@ -239,9 +240,9 @@
 {{--                        <li data-filter=".event">Event </li>--}}
 {{--                        <li data-filter=".fashion">Fashion </li>--}}
 {{--                        <li data-filter=".product">Product </li>--}}
-                    </ul>
-                </div>
-            </div>
+{{--                    </ul>--}}
+{{--                </div>--}}
+{{--            </div>--}}
             <div class="row gallery-items">
                 <div class="masonry-items">
 
@@ -253,7 +254,7 @@
                                     <div class="gallery-masonry-item-img"></div>
                                     <div class="gallery-masonry-item-content">
                                         <div class="gallery-masonry-item-category">{{ $img['collection']['name'] }} </div>
-                                        <h4 class="gallery-masonry-item-title">Quisue sen duru martin </h4>
+                                        <h4 class="gallery-masonry-item-title">{{ $img->collection->description }}</h4>
                                     </div>
                                 </div>
                             </a>

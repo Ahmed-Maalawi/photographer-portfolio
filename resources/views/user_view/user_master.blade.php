@@ -15,7 +15,53 @@
     <script async="" src="{{ asset('user_style/www.googletagmanager.com/gtag/js_93270489.js') }}"></script>
 
 
+    <style>
+        @media only screen and (min-width: 1100px) {
+            .masonry {
+                -moz-column-count: 3;
+                -webkit-column-count: 3;
+                column-count: 3;
+            }
+        }
 
+        @media only screen and (min-width: 900px) {
+            .masonry {
+                -moz-column-count: 3;
+                -webkit-column-count: 3;
+                column-count: 3;
+            }
+        }
+
+        @media only screen and (min-width: 700px) {
+            .masonry {
+                -moz-column-count: 3;
+                -webkit-column-count: 3;
+                column-count: 3;
+            }
+        }
+
+        .masonry {
+            margin: 1.5em 0;
+            padding: 0;
+            -moz-column-gap: 1.5em;
+            -webkit-column-gap: 1.5em;
+            column-gap: 1.5em;
+            font-size: .85em;
+        }
+
+        .item {
+            /*background-color: #eee;*/
+            display: inline-block;
+            margin: 0 0 1em;
+            width: 100%;
+        }
+
+        .item img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() {

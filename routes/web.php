@@ -27,11 +27,13 @@ Route::get('/', function () {
 //    return view('welcome');
     return redirect()->route('user.home');
 });
+
 Route::get('home', [UserController::class, 'index'])->name('user.home');
 Route::get('about', [UserController::class, 'about'])->name('about');
 Route::get('contact', [UserController::class, 'contact'])->name('contact');
 Route::get('service', [UserController::class, 'service'])->name('service');
 Route::get('work', [UserController::class, 'work'])->name('work');
+
 //Route::post('mail/submit', [ContactController::class, 'submit'])->name('mail.submit');
 Route::get('/gallery/photos', [UserController::class, 'photos'])->name('gallery.photos');
 Route::get('/gallery/video', [UserController::class, 'work'])->name('gallery.video');
