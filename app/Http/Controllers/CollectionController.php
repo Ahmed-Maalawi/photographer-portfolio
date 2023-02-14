@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Collection;
-use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Intervention\Image\Facades\Image;

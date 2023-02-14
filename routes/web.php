@@ -10,6 +10,8 @@ use App\Http\Controllers\user\UserController;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\VideosController;
+use App\Models\Feedback;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,18 +94,32 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['auth:sanctum,admin', 'verifi
         Route::get('/disActivate/{id}', [ImageController::class, 'disActivate'])->name('image.disActivate');
         Route::get('/delete-image/{id}', [ImageController::class, 'deleteImage'])->name('delete.image');
 
+
+/*
+|--------------------------------------------------------------------------
+|                   Routese For Videos
+|--------------------------------------------------------------------------
+|
+*/
+
+        Route::prefix('videos')->controller(VideosController::class)->group(function() {
+            Route::get('all', 'index')->name('admin.videos.all');
+            Route::get('add', 'create')->name('admin.videos.create');
+            Route::post('store', 'store')->name('admin.videos.store');
+        });
+
     });
 
-    Route::group(['prefix' => 'feedback'], function () {
+    Route::group(['prefix' => 'feedback', 'controller' => FeedbackController::class], function () {
 
-       Route::get('/all', [FeedbackController::class, 'index'])->name('index.feedback');
-       Route::get('/add', [FeedbackController::class, 'addFeedback'])->name('add.feedback');
-       Route::post('/store', [FeedbackController::class, 'storeFeedback'])->name('store.feedback');
-       Route::get('/edit/{id}', [FeedbackController::class, 'editFeedback'])->name('edit.feedback');
-       Route::post('/update', [FeedbackController::class, 'updateFeedback'])->name('update.feedback');
-       Route::get('/delete/{id}', [FeedbackController::class, 'deleteFeedback'])->name('delete.feedback');
-       Route::get('/disActive/{id}', [FeedbackController::class, 'disActive'])->name('disActive.feedback');
-       Route::get('/Activate/{id}', [FeedbackController::class, 'Activate'])->name('Activate.feedback');
+       Route::get('/all',[FeedbackController::class,'index'])->name('index.feedback');
+       Route::get('/add',[FeedbackController::class,'addFeedback'])->name('add.feedback');
+       Route::post('/store',[FeedbackController::class,'storeFeedback'])->name('store.feedback');
+       Route::get('/edit/{id}',[FeedbackController::class, 'editFeedback'])->name('edit.feedback');
+       Route::post('/update',[FeedbackController::class, 'updateFeedback'])->name('update.feedback');
+       Route::get('/delete/{id}',[FeedbackController::class, 'deleteFeedback'])->name('delete.feedback');
+       Route::get('/disActive/{id}',[FeedbackController::class, 'disActive'])->name('disActive.feedback');
+       Route::get('/Activate/{id}',[FeedbackController::class, 'Activate'])->name('Activate.feedback');
 
     });
 
@@ -124,4 +140,3 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['auth:sanctum,admin', 'verifi
 Route::get('login', function () {
     return view('errors.404');
 });
-

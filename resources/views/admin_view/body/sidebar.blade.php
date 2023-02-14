@@ -27,8 +27,6 @@
                     </ul>
                 </li>
 
-                <li class="{{ ($route == 'team')? 'active' : ''}}"><a href="{{ route('team') }}"><i class="fa-solid fa-people-group"></i>  <span>Team Members </span></a></li>
-
 
                 <li class="has-sub-menu {{ ($prefix == 'admin/news')? 'active': ''}}"><a href="#"><i class="fa-solid fa-paperclip"></i>  <span>News </span></a>
                     <ul class="side-header-sub-menu">
@@ -37,6 +35,18 @@
                     </ul>
                 </li>
 
+
+                <li class="has-sub-menu {{ ($prefix == 'admin/videos')? 'active': ''}}"><a href="#"><i class="fa-solid fa-video"></i>
+                        <span>Videos </span></a>
+                    <ul class="side-header-sub-menu">
+                        <li class="{{ ($route == 'admin.videos.all')? 'active' : ''}}"><a href="{{ route('admin.videos.all') }}"><span>Manage Videos
+                                </span></a></li>
+                        <li class="{{ ($route == 'admin.videos.create')? 'active' : ''}}"><a href="{{ route('admin.videos.create') }}"><span>Add Video
+                                </span></a></li>
+                    </ul>
+                </li>
+
+                <li class="{{ ($route == 'team')? 'active' : ''}}"><a href="{{ route('team') }}"><i class="fa-solid fa-people-group"></i> <span>Team Members </span></a></li>
             </ul>
         </nav>
 

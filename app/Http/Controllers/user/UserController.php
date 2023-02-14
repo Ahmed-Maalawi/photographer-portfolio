@@ -41,9 +41,9 @@ class UserController extends Controller
 
     public function work()
     {
-        $collections = Collection::where('status', true)->get();
+        // $collections = Collection::where('status', true)->get();
 
-        return view('user_view.work', compact('collections'));
+        return view('user_view.gallery.video');
     }
 
     public function photos()

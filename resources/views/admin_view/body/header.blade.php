@@ -69,7 +69,7 @@
                                 <!-- Dropdown -->
                                 <div class="adomx-dropdown-menu dropdown-menu-mail">
                                     <div class="head">
-                                        <h4 class="title">You have 3 new ____. </h4>
+                                        <h4 class="title">You have 3 new notifactions. </h4>
                                     </div>
                                     <div class="body custom-scroll">
                                         <ul>
@@ -208,10 +208,10 @@
                                 <a class="toggle" href="#">
                                     <span class="user">
                                 <span class="avatar">
-                                    <img src="{{ asset('admin_style/images/avatar/avatar-1.jpg') }}" alt="" />
+                                    <img src="{{  asset(Auth::user()->profile_photo_url) }}" alt="" /> <!-- 'admin_style/images/avatar/avatar-1.jpg' -->
                                     <span class="status"></span>
                                     </span>
-                                    <span class="name">Madison Howard </span>
+                                    <span class="name">{{ Auth::user()->name }}</span>
                                     </span>
                                 </a>
 
