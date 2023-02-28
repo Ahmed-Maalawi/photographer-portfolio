@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Collection;
+use App\Models\Image;
+use App\Models\post;
+use App\Models\Video;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -47,8 +51,20 @@ class AdminController extends Controller
 
     public function index()
     {
-        return view('admin_view.index');
-        // return 'test';
+//        $images = Image::all()->count();
+//        $videos = Video::all()->count();
+//        $posts = post::all()->count();
+//        $collections = Collection::all()->count();
+
+//        dd($images);
+
+        return view('admin_view.index',[
+            'images' => Image::all()->count(),
+            'videos' => Video::all()->count(),
+            'posts' => post::all()->count(),
+            'collections' => Collection::all()->count(),
+        ]);
+
     }
 
 

@@ -47,7 +47,7 @@
                             </td>
                             <td style="display: table-cell;" class="text-center text-white">
                                 <a class="button button-info" href="{{ route('edit.member', $member->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a class="button button-danger" href="{{ route('delete.member', $member->id) }}" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
+                                <a class="button button-danger delete-confirm" href="{{ route('delete.member', $member->id) }}" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
                                 @if($member->status == true)
                                     <a class="button button-dark" href="{{ route('disActive.member', $member->id) }}" title="Dis-Active"><i class="fa-solid fa-arrow-down"></i></a>
                                 @else
@@ -127,4 +127,26 @@
             <!--Form controls End-->
 
         </div>
+
+
+        <script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+        <script type="text/javascript">
+            $('.delete-confirm').on('click', function (e) {
+                e.preventDefault();
+                const url = $(this).attr('href');
+                swal({
+                    title: 'Are you sure?',
+                    text: 'This record and it`s details will be permanantly deleted!',
+                    icon: 'warning',
+                    buttons: ["Cancel", "Yes!"],
+                }).then(function(value) {
+                    if (value) {
+                        window.location.href = url;
+                    }
+                });
+            });
+
+        </script>
+        </script>
 @endsection

@@ -1,17 +1,14 @@
 <?php
 
 use App\Http\Controllers\CollectionController;
-use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\user\UserController;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\VideosController;
-use App\Models\Feedback;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,15 +27,23 @@ Route::get('/', function () {
     return redirect()->route('user.home');
 });
 
-Route::get('home', [UserController::class, 'index'])->name('user.home');
-Route::get('about', [UserController::class, 'about'])->name('about');
-Route::get('contact', [UserController::class, 'contact'])->name('contact');
-Route::get('service', [UserController::class, 'service'])->name('service');
-Route::get('work', [UserController::class, 'work'])->name('work');
+Route::controller(UserController::class)->group(function () {
+    Route::get('home', 'index')->name('user.home');
+    Route::get('about', 'about')->name('user.about');
+    Route::get('contact', 'contact')->name('user.contact');
+    Route::get('service', 'service')->name('user.service');
+//    Route::get('videos', 'videos')->name('user.videos');
+});
+
+//Route::get('home', [UserController::class, 'index'])->name('user.home');
+//Route::get('about', [UserController::class, 'about'])->name('user.about');
+//Route::get('contact', [UserController::class, 'contact'])->name('user.contact');
+//Route::get('service', [UserController::class, 'service'])->name('user.service');
+//Route::get('work', [UserController::class, 'work'])->name('user.work');
 
 //Route::post('mail/submit', [ContactController::class, 'submit'])->name('mail.submit');
 Route::get('/gallery/photos', [UserController::class, 'photos'])->name('gallery.photos');
-Route::get('/gallery/video', [UserController::class, 'work'])->name('gallery.video');
+Route::get('/gallery/video', [UserController::class, 'videos'])->name('gallery.video');
 Route::get('/work/collection/view/{id}', [UserController::class, 'view_collection'])->name('work.photo.view');
 Route::group(['prefix' => 'blog'], function() {
     Route::get('/posts/all', [PostController::class, 'allPosts'])->name('blog.index');
@@ -60,6 +65,7 @@ Route::group(['prefix'=> 'admin', 'middleware'=>['admin:admin']], function(){
 Route::group(['prefix'=> 'admin', 'middleware' => ['auth:sanctum,admin', 'verified']], function(){
 
 //    Route::get('/admin/dashboard', function () {return view('admin_view.index');})->name('admin.dashboard');       // admin dashboard route
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');       // admin dashboard route
 
     Route::get('/logout',[AdminController::class, 'destroy'])->name('admin.logout');
 
@@ -106,6 +112,9 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['auth:sanctum,admin', 'verifi
             Route::get('all', 'index')->name('admin.videos.all');
             Route::get('add', 'create')->name('admin.videos.create');
             Route::post('store', 'store')->name('admin.videos.store');
+            Route::get('edit/{id}', 'edit')->name('admin.videos.edit');
+            Route::post('update/{id}', 'update')->name('admin.video.update');
+            Route::get('delete/{id}', 'destroy')->name('admin.videos.delete');
         });
 
     });

@@ -92,7 +92,7 @@
     </svg>
 </div>
 
-@include('user_view.body.header');
+@include('user_view.body.header')
 {{--   start content   --}}
 
 @yield('user')

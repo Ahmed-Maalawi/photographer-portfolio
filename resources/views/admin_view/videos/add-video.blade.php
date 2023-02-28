@@ -69,7 +69,7 @@
             </div>
 
             <div class="col-12 mb-20">
-                <input type="submit" value="Share Post" class="button button-primary float-left">
+                <input type="submit" value="upload video" class="button button-primary float-left">
                 <a href="{{ route('admin.dashboard') }}" class="button button-danger float-right">Cancle</a>
             </div>
         </form>

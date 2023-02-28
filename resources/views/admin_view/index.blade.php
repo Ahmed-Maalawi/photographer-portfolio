@@ -6,7 +6,8 @@
     <!-- Page Heading Start -->
     <div class="col-12 col-lg-auto mb-20">
         <div class="page-heading">
-            <h3>Dashboard  <span>/ eCommerce </span></h3>
+            <h3>Dashboard  </h3>
+{{--            <span>/ eCommerce </span>   --}}
         </div>
     </div><!-- Page Heading End -->
 
@@ -28,14 +29,14 @@
 
             <!-- Head -->
             <div class="head">
-                <h4>Total Visitor </h4>
+                <h4>Total Images </h4>
                 <a href="#" class="view"><i class="zmdi zmdi-eye"></i></a>
             </div>
 
             <!-- Content -->
             <div class="content">
-                <h5>Todays </h5>
-                <h2>100,560.00 </h2>
+                <h5>Image </h5>
+                <h2>{{ $images ?? '0' }} </h2>
             </div>
 
             <!-- Footer -->
@@ -55,14 +56,14 @@
 
             <!-- Head -->
             <div class="head">
-                <h4>Product Sold </h4>
-                <a href="#" class="view"><i class="zmdi zmdi-eye"></i></a>
+                <h4>Total Videos </h4>
+                <a href="{{ route('admin.videos.all') }}" class="view"><i class="zmdi zmdi-eye"></i></a>
             </div>
 
             <!-- Content -->
             <div class="content">
-                <h5>Todays </h5>
-                <h2>85,000.00 </h2>
+                <h5>Video </h5>
+                <h2>{{ $videos ?? 0 }} </h2>
             </div>
 
             <!-- Footer -->
@@ -82,14 +83,14 @@
 
             <!-- Head -->
             <div class="head">
-                <h4>Order Received </h4>
-                <a href="#" class="view"><i class="zmdi zmdi-eye"></i></a>
+                <h4>Total Collections </h4>
+                <a href="{{ route('add.collection') }}" class="view"><i class="zmdi zmdi-eye"></i></a>
             </div>
 
             <!-- Content -->
             <div class="content">
-                <h5>Todays </h5>
-                <h2>5,000.00 </h2>
+                <h5>Collection </h5>
+                <h2>{{ $collections }} </h2>
             </div>
 
             <!-- Footer -->
@@ -109,14 +110,14 @@
 
             <!-- Head -->
             <div class="head">
-                <h4>Total Revenue </h4>
+                <h4>Total Posts </h4>
                 <a href="#" class="view"><i class="zmdi zmdi-eye"></i></a>
             </div>
 
             <!-- Content -->
             <div class="content">
-                <h5>Todays </h5>
-                <h2>3,000,000.00 </h2>
+                <h5>Post </h5>
+                <h2>{{ $posts ?? 0 }} </h2>
             </div>
 
             <!-- Footer -->
@@ -672,5 +673,10 @@
     </div><!-- Top Selling Country End -->
 
 </div>
+
+@php
+    toast('Success Toast','success');
+
+@endphp
 
 @endsection

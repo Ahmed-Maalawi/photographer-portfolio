@@ -1,3 +1,4 @@
+@php use Carbon\Carbon; @endphp
 <footer class="footer clearfix" data-overlay-darkgray="8">
     <div class="container">
         <!-- First footer -->
@@ -14,8 +15,11 @@
                                 <input type="email" name="email" placeholder="Enter Your Email" required=""/>
                             </p>
                             <p>
-{{--                                <input type="submit" value="Subscribe Now " class="submit ttm-btn ttm-btn-size-md ttm-btn-shape-squar ttm-btn-style-fill ttm-btn-color-skincolor">--}}
-                                <button class="submit ttm-btn ttm-btn-size-md ttm-btn-shape-squar ttm-btn-style-fill ttm-btn-color-skincolor" type="submit">Subscribe Now </button>
+                                {{--                                <input type="submit" value="Subscribe Now " class="submit ttm-btn ttm-btn-size-md ttm-btn-shape-squar ttm-btn-style-fill ttm-btn-color-skincolor">--}}
+                                <button
+                                    class="submit ttm-btn ttm-btn-size-md ttm-btn-shape-squar ttm-btn-style-fill ttm-btn-color-skincolor"
+                                    type="submit">Subscribe Now
+                                </button>
                             </p>
                         </div>
                         <div id="subscribe-msg"></div>
@@ -28,9 +32,11 @@
             <div class="row">
                 <div class="col-md-4 widget-area">
                     <div class="widget clearfix">
-                        <div class="footer-logo">  <img class="img-fluid" src="{{ asset('user_style/img/logo.png') }}" alt="" />  </div>
+                        <div class="footer-logo"><img class="img-fluid" src="{{ asset('user_style/img/logo.png') }}"
+                                                      alt=""/></div>
                         <div class="widget-text">
-                            <p>Photography inila miss uman saten eliten finus vivera alacus miss the drudean seneice miss notumane tonec a fermen. </p>
+                            <p>Photography inila miss uman saten eliten finus vivera alacus miss the drudean seneice
+                                miss notumane tonec a fermen. </p>
                         </div>
                     </div>
                 </div>
@@ -50,7 +56,9 @@
                         <h3 class="widget-title">Contact </h3>
                         <div class="featured-icon-box icon-align-before-content icon-ver_align-top style1">
                             <div class="featured-icon">
-                                <div class="ttm-icon ttm-icon_element-onlytxt ttm-icon_element-color-skincolor ttm-icon_element-size-xs">  <i class="ti-mobile"></i>  </div>
+                                <div
+                                    class="ttm-icon ttm-icon_element-onlytxt ttm-icon_element-color-skincolor ttm-icon_element-size-xs">
+                                    <i class="ti-mobile"></i></div>
                             </div>
                             <div class="featured-content">
                                 <div class="featured-desc">
@@ -60,7 +68,9 @@
                         </div>
                         <div class="featured-icon-box icon-align-before-content icon-ver_align-top style1">
                             <div class="featured-icon">
-                                <div class="ttm-icon ttm-icon_element-onlytxt ttm-icon_element-color-skincolor ttm-icon_element-size-xs">  <i class="ti-email"></i>  </div>
+                                <div
+                                    class="ttm-icon ttm-icon_element-onlytxt ttm-icon_element-color-skincolor ttm-icon_element-size-xs">
+                                    <i class="ti-email"></i></div>
                             </div>
                             <div class="featured-content">
                                 <div class="featured-desc">
@@ -70,7 +80,9 @@
                         </div>
                         <div class="featured-icon-box icon-align-before-content icon-ver_align-top style1">
                             <div class="featured-icon">
-                                <div class="ttm-icon ttm-icon_element-onlytxt ttm-icon_element-color-skincolor ttm-icon_element-size-xs">  <i class="ti-location-pin"></i>  </div>
+                                <div
+                                    class="ttm-icon ttm-icon_element-onlytxt ttm-icon_element-color-skincolor ttm-icon_element-size-xs">
+                                    <i class="ti-location-pin"></i></div>
                             </div>
                             <div class="featured-content">
                                 <div class="featured-desc">
@@ -86,7 +98,8 @@
         <div class="bottom-footer-text">
             <div class="row copyright">
                 <div class="col-md-8">
-                    <p class="mb-0">Copyright © 2022 by  <a href="#">DuruThemes </a>. All rights reserved. </p>
+                    <p class="mb-0">Copyright © {{ Carbon::now()->year }} by <a href="#">Essam Mohamed Soliman </a>. All rights
+                        reserved. </p>
                 </div>
                 <div class="col-md-4">
                     <div class="social-icons">

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateVideoRequest extends FormRequest
+class uploadVideoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,8 @@ class UpdateVideoRequest extends FormRequest
     {
         return [
             'video_title' => 'required|min:3|string',
-            'new_cover' => 'image|mimes:jpg,png,jpeg,gif,svg'
+            'Video_file' => 'required|file|mimetypes:video/avi,video/mpeg,video/quicktime,video/mp4,video/MP2T',
+            'video_img' => 'required|image|mimes:jpg,png,jpeg,gif,svg'
         ];
     }
 }

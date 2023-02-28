@@ -8,6 +8,7 @@ use App\Models\Feedback;
 use App\Models\Image;
 use App\Models\Member;
 use App\Models\post;
+use App\Models\Video;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -39,11 +40,11 @@ class UserController extends Controller
         return view('user_view.services');
     }
 
-    public function work()
+    public function videos()
     {
-        // $collections = Collection::where('status', true)->get();
-
-        return view('user_view.gallery.video');
+        return view('user_view.gallery.video', [
+            'videos' => [] // Video::all()
+        ]);
     }
 
     public function photos()

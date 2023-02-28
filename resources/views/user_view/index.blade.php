@@ -23,8 +23,8 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <h4>Hello there ! </h4>
-                                    <h1>I'm Martin Dan </h1>
-                                    <p>I am professional photographer based on New York, creating dreamscapes with black, white and shades in-between. </p>  <a href="#" class="button-primary">My works </a>  <a href="{{ route('contact') }}" class="button-tersiyer">Contact me </a>
+                                    <h1>I'm Essam Mohamed Soliman </h1>
+                                    <p>I am professional photographer based on El-Maadi, creating dreamscapes with black, white and shades in-between. </p>  <a href="#" class="button-primary">My works </a>  <a href="{{ route('contact') }}" class="button-tersiyer">Contact me </a>
                                 </div>
                             </div>
                         </div>
@@ -40,7 +40,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 mb-30 animate-box" data-animate-effect="fadeInUp">
-                    <h2 class="section-title">Hello, I'm Martin Dan, a professional photographer based on New York </h2>
+                    <h2 class="section-title">Hello, I'm Essam Mohamed Soliman, a professional photographer based on El-Maadi </h2>
                     <p>I love to pause the wild, happy and real moments of life, just to hear their stories untold. Viverra tristique usto duis vitae diam neque nivamus estan ateuene artines viverra nec setlie no curabit tristique.</p>
                     <ul class="list-unstyled about-list mb-30">
                         <li>
@@ -65,14 +65,14 @@
                     <hr class="border-2" />
                     <div class="about-bottom">  <img src="{{ asset('user_style/img/signature-dark.svg') }}" alt="" class="image about-signature" />
                         <div class="about-name-wrapper">
-                            <div class="about-name-dark">Martin Dan </div>
+                            <div class="about-name-dark">Essam Mohamed </div>
                             <div class="about-rol">Founder of Photography </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-5 offset-md-1 animate-box" data-animate-effect="fadeInUp">
                     <div class="about-img">
-                        <div class="img">  <img src="{{ asset('user_style/img/about.jpg') }}" class="img-fluid" alt="" />  </div>
+                        <div class="img">  <img src="{{ asset('user_style/img/essam.jpg') }}" class="img-fluid" alt="" />  </div>
                     </div>
                 </div>
             </div>
@@ -374,58 +374,60 @@
         </div>
     </section>
     <!-- Testiominals -->
-    <section class="testimonials">
-        <div class="background bg-img bg-fixed section-padding pb-0" data-background="{{ asset('user_style/img/banner/2.jpg') }}" data-overlay-dark="3">
-            <div class="container">
-                <div class="row">
-                    <!-- Work together -->
-                    <div class="col-md-6 mb-30 animate-box" data-animate-effect="fadeInUp">
-                        <h5>Need help with professional photography? Let's work together! </h5>  <a href="{{ route('contact') }}" class="button-tersiyer">Contact me </a>
-                    </div>
-                    <!-- Testiominals -->
-                    <div class="col-md-5 offset-md-1 animate-box" data-animate-effect="fadeInUp">
-                        <div class="testimonials-box">
-                            <div class="owl-carousel owl-theme">
-                                @foreach($feedback as $item)
-                                    <div class="item">  <span class="quote"><img src="{{ asset('user_style/img/quot.png') }}" alt="" /></span>
+{{--    <section class="testimonials">--}}
+{{--        <div class="background bg-img bg-fixed section-padding pb-0" data-background="{{ asset('user_style/img/banner/2.jpg') }}" data-overlay-dark="3">--}}
+{{--            <div class="container">--}}
+{{--                <div class="row">--}}
+{{--                    <!-- Work together -->--}}
+{{--                    <div class="col-md-6 mb-30 animate-box" data-animate-effect="fadeInUp">--}}
+{{--                        <h5>Need help with professional photography? Let's work together! </h5>--}}
+{{--                        <a href="{{ route('contact') }}" class="button-tersiyer">Contact me </a>--}}
+{{--                    </div>--}}
+{{--                    <!-- Testiominals -->--}}
+{{--                    <div class="col-md-5 offset-md-1 animate-box" data-animate-effect="fadeInUp">--}}
+{{--                        <div class="testimonials-box">--}}
+{{--                            <div class="owl-carousel owl-theme">--}}
+{{--                                @foreach($feedback as $item)--}}
+{{--                                    <div class="item">  <span class="quote"><img src="{{ asset('user_style/img/quot.png') }}" alt="" /></span>--}}
 
-                                        <p class="v-border">{{ $item->feedback }} </p>
-                                        <div class="info">
-                                            <div class="author-img">  <img class="img-fluid" src="{{ asset($item->profile_img) }}" alt="" />  </div>
-                                            <div class="cont">
-                                                <h6>{{ $item->name }} </h6>  <span>{{ $item->job }} </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                                <div class="item">  <span class="quote"><img src="{{ asset('user_style/img/quot.png') }}" alt="" /></span>
+{{--                                        <p class="v-border">{{ $item->feedback }} </p>--}}
+{{--                                        <div class="info">--}}
+{{--                                            <div class="author-img">  <img class="img-fluid" src="{{ asset($item->profile_img) }}" alt="" />  </div>--}}
+{{--                                            <div class="cont">--}}
+{{--                                                <h6>{{ $item->name }} </h6>  <span>{{ $item->job }} </span>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                @endforeach--}}
+{{--                                <div class="item">  <span class="quote"><img src="{{ asset('user_style/img/quot.png') }}" alt="" /></span>--}}
 
-                                    <p class="v-border">Photographers viverra tristique duis vitae dias the nesue niva aestan ateuene artines duruna setlie suscipe fermen. Quisque sed tellus man lorem nullam dururana tortor felis porta. </p>
-                                    <div class="info">
-                                        <div class="author-img">  <img src="{{ asset('user_style/img/team/1.jpg') }}" alt="" />  </div>
-                                        <div class="cont">
-                                            <h6>Jason Brown </h6>  <span>Project Owner </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">  <span class="quote">
-                                         <img src="{{ asset('user_style/img/quot.png') }}" alt="" />
-                                     </span>
-                                    <p class="v-border">Photographers viverra tristique duis vitae dias the nesue niva aestan ateuene artines duruna setlie suscipe fermen. Quisque sed tellus man lorem nullam dururana tortor felis porta. </p>
-                                    <div class="info">
-                                        <div class="author-img">  <img src="{{ asset('user_style/img/team/2.jpg') }}" alt="" />  </div>
-                                        <div class="cont">
-                                            <h6>Emily White </h6>  <span>Project Owner </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+{{--                                    <p class="v-border">Photographers viverra tristique duis vitae dias the nesue niva aestan ateuene artines duruna setlie suscipe fermen. Quisque sed tellus man lorem nullam dururana tortor felis porta. </p>--}}
+{{--                                    <div class="info">--}}
+{{--                                        <div class="author-img">  <img src="{{ asset('user_style/img/team/1.jpg') }}" alt="" />  </div>--}}
+{{--                                        <div class="cont">--}}
+{{--                                            <h6>Jason Brown </h6>  <span>Project Owner </span>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="item">  <span class="quote">--}}
+{{--                                         <img src="{{ asset('user_style/img/quot.png') }}" alt="" />--}}
+{{--                                     </span>--}}
+{{--                                    <p class="v-border">Photographers viverra tristique duis vitae dias the nesue niva aestan ateuene artines duruna setlie suscipe fermen. Quisque sed tellus man lorem nullam dururana tortor felis porta. </p>--}}
+{{--                                    <div class="info">--}}
+{{--                                        <div class="author-img">  <img src="{{ asset('user_style/img/team/2.jpg') }}" alt="" />  </div>--}}
+{{--                                        <div class="cont">--}}
+{{--                                            <h6>Emily White </h6>  <span>Project Owner </span>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
+    @include('user_view.body.feedback')
     <!-- Clients -->
     <section class="clients">
         <div class="container">

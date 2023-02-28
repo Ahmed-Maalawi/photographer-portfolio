@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreMemberRequest;
 use App\Models\Member;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class MemberController extends Controller
 {
@@ -17,21 +20,9 @@ class MemberController extends Controller
         return view('admin_view.team.add_member', compact('allMembers'));
     }
 
-    public function storeMember(Request $request)
+    public function storeMember(StoreMemberRequest $request)
     {
-
-        $request->validate([
-            'name' => 'required',
-            'member_img' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
-            'description' => 'required',
-        ], [
-            'name.required' => 'Name is Required',
-            'member_img.required' => 'Image Is Required',
-            'member_img.image' => 'Enter Real Image',
-            'member_img.mimes' => 'Image Must Be Is [ jpg, png, jpeg, gif, svg]',
-            'description' => 'Pio is Required',
-        ]);
-
+        $request->validated();
 
         $img = $request->file('member_img');
 
@@ -52,7 +43,7 @@ class MemberController extends Controller
             'alert-type' => 'success',
         );
 
-        return redirect()->back()->with($notification);
+        return redirect()->back()->with('toast_success', 'member added successfully !');
     }
 
     public function editMember($id)
@@ -66,16 +57,10 @@ class MemberController extends Controller
     {
 
         $request->validate([
-            'name' => 'required',
-            'job_title' => 'required',
+            'name' => 'required|min:3',
+            'job_title' => 'required|min:3',
             'member_img' => 'image|mimes:jpg,png,jpeg,gif,svg',
-            'description' => 'required',
-        ], [
-            'name.required' => 'Name is Required',
-            'member_img.image' => 'File must be image',
-            'member_img.mimes' => 'image must be jpg,png,jpeg,gif,svg',
-            'job_title.required' => 'job title is Required',
-            'description' => 'Pio is Required',
+            'description' => 'required|min:3',
         ]);
 
         $id = $request->member_id;
@@ -117,7 +102,7 @@ class MemberController extends Controller
         return redirect()->route('team')->with($notification);
     }
 
-    public function ActiveMember($id)
+    public function ActiveMember(Int $id)
     {
         Member::findOrFail($id)->update([
             'status' => true,
@@ -133,7 +118,7 @@ class MemberController extends Controller
     }
 
 
-    public function disActiveMember($id)
+    public function disActiveMember(Int $id)
     {
         Member::findOrFail($id)->update([
             'status' => false,
@@ -148,16 +133,18 @@ class MemberController extends Controller
         return redirect()->back()->with($notification);
     }
 
-    public function delete($id)
+    public function delete(Int $id)
     {
 
         Member::findOrFail($id)->delete();
+
+        alert()->question('Are You Sure ?','this member will be removed ?');
 
         $notification = array(
             'message' => 'Member Deleted Successfully',
             'alert-type' => 'success',
         );
 
-        return redirect()->back()->with($notification);
+        return redirect()->back()->with('toast_success', 'member deleted successfully!');
     }
 }

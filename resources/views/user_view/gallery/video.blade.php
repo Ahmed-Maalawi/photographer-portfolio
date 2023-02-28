@@ -21,57 +21,20 @@
     <div class="container">
         <div class="row">
             <!-- 2 columns -->
-            <div class="col-md-6">
-                <div class="vid-area mb-30">
-                    <div class="vid-icon"> <img src="{{ asset('user_style/img/slider/1.jpg') }}" alt="YouTube">
-                        <a class="video-gallery-button vid" href="https://vimeo.com/74295728"> <span
-                                class="video-gallery-polygon">
-                                <i class="ti-control-play"></i>
-                            </span> </a>
+           @forelse($videos as $video)
+                <div class="col-md-6">
+                    <div class="vid-area mb-30">
+                        <div class="vid-icon"> <img src="{{ asset($video['video_img']) }}" alt="YouTube">
+                            <a class="video-gallery-button vid"
+                               href="{{ asset($video['video_path']) }}">
+                                <span class="video-gallery-polygon"><i class="ti-control-play"></i></span>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="vid-area mb-30">
-                    <div class="vid-icon"> <img src="{{ asset('user_style/img/slider/2.jpg') }}" alt="Vimeo">
-                        <a class="video-gallery-button vid" href="https://www.youtube.com/watch?v=ybso7mzV2hY"> <span
-                                class="video-gallery-polygon">
-                                <i class="ti-control-play"></i>
-                            </span> </a>
-                    </div>
-                </div>
-            </div>
-            <!-- 3 columns -->
-            <div class="col-md-4">
-                <div class="vid-area mb-30">
-                    <div class="vid-icon"> <img src="{{ asset('user_style/img/slider/1.jpg') }}" alt="YouTube">
-                        <a class="video-gallery-button vid" href="https://vimeo.com/74295728"> <span
-                                class="video-gallery-polygon">
-                                <i class="ti-control-play"></i>
-                            </span> </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="vid-area mb-30">
-                    <div class="vid-icon"> <img src="{{ asset('user_style/img/slider/2.jpg') }}" alt="YouTube">
-                        <a class="video-gallery-button vid" href="https://www.youtube.com/watch?v=ybso7mzV2hY"> <span
-                                class="video-gallery-polygon">
-                                <i class="ti-control-play"></i>
-                            </span> </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="vid-area mb-30">
-                    <div class="vid-icon"> <img src="{{ asset('user_style/img/slider/3.jpg') }}" alt="YouTube">
-                        <a class="video-gallery-button vid" href="https://vimeo.com/74295728"> <span
-                                class="video-gallery-polygon">
-                                <i class="ti-control-play"></i>
-                            </span> </a>
-                    </div>
-                </div>
-            </div>
+           @empty
+               <h2 class="h1 text-capitalize text-center my-4 mx-auto">no videos added yet</h2>
+           @endforelse
         </div>
     </div>
 </section>
