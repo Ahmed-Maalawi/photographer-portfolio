@@ -14,7 +14,8 @@
     <!-- Page Button Group Start -->
     <div class="col-12 col-lg-auto mb-20">
         <div class="page-date-range">
-            <input type="text" class="form-control input-date-predefined" />
+            <p class="form-control"> {{ \Carbon\Carbon::now()->format('D, d - M - y') }}</p>
+{{--            <input type="text" value=""  />--}}
         </div>
     </div><!-- Page Button Group End -->
 
@@ -30,7 +31,7 @@
             <!-- Head -->
             <div class="head">
                 <h4>Total Images </h4>
-                <a href="#" class="view"><i class="zmdi zmdi-eye"></i></a>
+                <a href="{{ route('displayImages') }}" class="view"><i class="zmdi zmdi-eye"></i></a>
             </div>
 
             <!-- Content -->
@@ -40,12 +41,12 @@
             </div>
 
             <!-- Footer -->
-            <div class="footer">
-                <div class="progess">
-                    <div class="progess-bar" style="width: 92%;"></div>
-                </div>
-                <p>92% of unique visitor </p>
-            </div>
+{{--            <div class="footer">--}}
+{{--                <div class="progess">--}}
+{{--                    <div class="progess-bar" style="width: 92%;"></div>--}}
+{{--                </div>--}}
+{{--                <p>92% of unique visitor </p>--}}
+{{--            </div>--}}
 
         </div>
     </div><!-- Top Report End -->
@@ -67,12 +68,12 @@
             </div>
 
             <!-- Footer -->
-            <div class="footer">
-                <div class="progess">
-                    <div class="progess-bar" style="width: 98%;"></div>
-                </div>
-                <p>98% of unique visitor </p>
-            </div>
+{{--            <div class="footer">--}}
+{{--                <div class="progess">--}}
+{{--                    <div class="progess-bar" style="width: 98%;"></div>--}}
+{{--                </div>--}}
+{{--                <p>98% of unique visitor </p>--}}
+{{--            </div>--}}
 
         </div>
     </div><!-- Top Report End -->
@@ -94,12 +95,12 @@
             </div>
 
             <!-- Footer -->
-            <div class="footer">
-                <div class="progess">
-                    <div class="progess-bar" style="width: 88%;"></div>
-                </div>
-                <p>88% of unique visitor </p>
-            </div>
+{{--            <div class="footer">--}}
+{{--                <div class="progess">--}}
+{{--                    <div class="progess-bar" style="width: 88%;"></div>--}}
+{{--                </div>--}}
+{{--                <p>88% of unique visitor </p>--}}
+{{--            </div>--}}
 
         </div>
     </div><!-- Top Report End -->
@@ -111,7 +112,7 @@
             <!-- Head -->
             <div class="head">
                 <h4>Total Posts </h4>
-                <a href="#" class="view"><i class="zmdi zmdi-eye"></i></a>
+                <a href="{{ route('news.index') }}" class="view"><i class="zmdi zmdi-eye"></i></a>
             </div>
 
             <!-- Content -->
@@ -121,12 +122,12 @@
             </div>
 
             <!-- Footer -->
-            <div class="footer">
-                <div class="progess">
-                    <div class="progess-bar" style="width: 76%;"></div>
-                </div>
-                <p>76% of unique visitor </p>
-            </div>
+{{--            <div class="footer">--}}
+{{--                <div class="progess">--}}
+{{--                    <div class="progess-bar" style="width: 76%;"></div>--}}
+{{--                </div>--}}
+{{--                <p>76% of unique visitor </p>--}}
+{{--            </div>--}}
 
         </div>
     </div><!-- Top Report End -->
@@ -673,10 +674,5 @@
     </div><!-- Top Selling Country End -->
 
 </div>
-
-@php
-    toast('Success Toast','success');
-
-@endphp
 
 @endsection

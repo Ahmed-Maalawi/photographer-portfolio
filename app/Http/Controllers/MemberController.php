@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreMemberRequest;
+use App\Http\Requests\UpdateMemberRequest;
 use App\Models\Member;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
-use RealRashid\SweetAlert\Facades\Alert;
 
 
 class MemberController extends Controller
@@ -38,38 +37,24 @@ class MemberController extends Controller
            'created_at' => Carbon::now(),
         ]);
 
-        $notification = array(
-            'message' => 'Member Added Successfully',
-            'alert-type' => 'success',
-        );
-
         return redirect()->back()->with('toast_success', 'member added successfully !');
     }
 
-    public function editMember($id)
+    public function editMember(int $id)
     {
         $member = Member::findOrFail($id);
 
         return view('admin_view.team.edit_member', compact('member'));
     }
 
-    public function updateMember(Request $request)
+    public function updateMember(UpdateMemberRequest $request)
     {
+        $request->validated();
 
-        $request->validate([
-            'name' => 'required|min:3',
-            'job_title' => 'required|min:3',
-            'member_img' => 'image|mimes:jpg,png,jpeg,gif,svg',
-            'description' => 'required|min:3',
-        ]);
-
-        $id = $request->member_id;
-
-        $member = Member::findOrFail($id);
+        $member = Member::findOrFail($request['member_id']);
         $newImg = $request->file('member_img');
 
         if($newImg) {
-
             $createName = hexdec(uniqid()).'.'.$newImg->getClientOriginalExtension();
             $newpath = 'uploads/our_team/'.$createName;
 
@@ -81,40 +66,27 @@ class MemberController extends Controller
                 'img_path' => $newpath,
                 'jop_title' => $request->job_title,
                 'pio' => $request->description,
-                'updated_at' => Carbon::now(),
             ]);
 
         } else {
 
             $member->update([
-                 'name' => $request->name,
-                 'jop_title' => $request->job_title,
-                 'pio' => $request->description,
-                 'updated_at' => Carbon::now(),
-             ]);
+                'name' => $request['name'],
+                'jop_title' => $request['job_title'],
+                'pio' => $request['description'],
+            ]);
         }
 
-        $notification = array(
-            'message' => 'Member Updated Successfully',
-            'alert-type' => 'info',
-        );
-
-        return redirect()->route('team')->with($notification);
+        return redirect()->route('team')->with('toast_success', 'member updated successfully!');
     }
 
-    public function ActiveMember(Int $id)
+    public function ActiveMember(int $id)
     {
         Member::findOrFail($id)->update([
             'status' => true,
-            'updated_at' =>  Carbon::now(),
         ]);
 
-        $notification = array(
-            'message' => 'Member Activated Successfully',
-            'alert-type' => 'info',
-        );
-
-        return redirect()->back()->with($notification);
+        return redirect()->back()->with('toast_success', 'member activated!');
     }
 
 
@@ -125,26 +97,13 @@ class MemberController extends Controller
             'updated_at' =>  Carbon::now(),
         ]);
 
-        $notification = array(
-            'message' => 'Member Dis-Activated Successfully',
-            'alert-type' => 'info',
-        );
-
-        return redirect()->back()->with($notification);
+        return redirect()->back()->with('toast_success', 'member dis-activated');
     }
 
-    public function delete(Int $id)
+    public function delete(int $id)
     {
-
         Member::findOrFail($id)->delete();
 
-        alert()->question('Are You Sure ?','this member will be removed ?');
-
-        $notification = array(
-            'message' => 'Member Deleted Successfully',
-            'alert-type' => 'success',
-        );
-
-        return redirect()->back()->with('toast_success', 'member deleted successfully!');
+        return redirect()->back()->with('toast_success', 'member deleted');
     }
 }

@@ -1,7 +1,7 @@
 @extends('user_view.user_master')
 
 @section('user')
-
+{{--    {{ dd($collection) }}--}}
     <!-- Header Banner -->
     <section class="banner-header banner-img banner-img-top section-padding valign bg-img bg-fixed banner-overlay" data-overlay-darkgray="1" data-background="{{ asset($collection->img_path) }}">
         <div class="container">
@@ -20,7 +20,7 @@
             <div class="row gallery-items">
                 <div class="masonry-items">
 
-                    @foreach($photos as $img)
+                    @foreach($collection->images as $img)
                         <div class="col-md-4 gallery-masonry-wrapper single-item {{ $img['collection']['name'] }}">
                             <a href="{{ asset($img->img_path) }}" title="" class="gallery-masonry-item-img-link img-zoom">
                                 <div class="gallery-box">

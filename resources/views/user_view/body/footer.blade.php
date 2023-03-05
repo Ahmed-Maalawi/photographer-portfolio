@@ -44,10 +44,10 @@
                     <div class="widget clearfix usful-links">
                         <h3 class="widget-title">Quick Links </h3>
                         <ul>
-                            <li><a href="{{ route('about') }}">About </a></li>
-                            <li><a href="{{ route('service') }}">Services </a></li>
-                            <li><a href="{{ route('work') }}">Works </a></li>
-                            <li><a href="{{ route('blog.index') }}">Blog </a></li>
+                            <li><a href="{{ route('user.about') }}">About </a></li>
+                            <li><a href="{{ route('user.service') }}">Services </a></li>
+                            <li><a href="{{ route('user.work') }}">Works </a></li>
+                            <li><a href="{{ route('user.blog.index') }}">Blog </a></li>
                         </ul>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                             </div>
                             <div class="featured-content">
                                 <div class="featured-desc">
-                                    <p>+1 123-456-0606 </p>
+                                    <p>+20 123-456-0606 </p>
                                 </div>
                             </div>
                         </div>
@@ -74,7 +74,7 @@
                             </div>
                             <div class="featured-content">
                                 <div class="featured-desc">
-                                    <p>info@phoxel.com </p>
+                                    <p>info@esaam.com </p>
                                 </div>
                             </div>
                         </div>
@@ -86,7 +86,7 @@
                             </div>
                             <div class="featured-content">
                                 <div class="featured-desc">
-                                    <p>120 King St, Charleston SC 29401, USA </p>
+                                    <p>9 St, Maadi Cairo, EGP </p>
                                 </div>
                             </div>
                         </div>

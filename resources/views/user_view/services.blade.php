@@ -136,7 +136,7 @@
                 <div class="row">
                     <!-- Work together -->
                     <div class="col-md-6 mb-30 animate-box" data-animate-effect="fadeInUp">
-                        <h5>Need help with professional photography? Let's work together! </h5>  <a href="{{ route('contact') }}" class="button-tersiyer">Contact me </a>
+                        <h5>Need help with professional photography? Let's work together! </h5>  <a href="{{ route('user.contact') }}" class="button-tersiyer">Contact me </a>
                     </div>
                     <!-- Testiominals -->
                     <div class="col-md-5 offset-md-1 animate-box" data-animate-effect="fadeInUp">

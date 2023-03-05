@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdatePostRequest;
+use App\Http\Requests\StorePostRequest;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Intervention\Image\Facades\Image;
 use App\Models\post;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
-use Intervention\Image\Facades\Image;
 
 class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -24,7 +28,7 @@ class PostController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -34,54 +38,36 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @return Response
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
-        $validated = $request->validate([
-            'content' => 'required',
-            'post_img' => 'required | image | mimes:jpeg,png,jpg,gif',
-            'post_title' => 'required'
-        ], [
-            'content.required' => 'please enter post content',
-            'post_img.required' => 'upload post image',
-            'post_img.mimes' => 'post image extension must be [ jpeg, png, jpg, gif]',
-            'post_img.image' => 'upload real image',
-            'post_title.required' => 'enter title for the post',
-        ]);
-
-
+        $request->validated();
 
         $img = $request->file('post_img');
         $newName = hexdec(uniqid()). '.' . $img->getClientOriginalExtension();
         $newPath = 'uploads/posts/' . $newName;
 
-        $image = Image::make($img)->save($newPath);
+        Image::make($img)->save($newPath);
 
-        $post = post::create([
+        post::create([
             'title' => $request['post_title'],
             'tag' =>  $request['post_tag'],
             'content' => $request['content'],
             'post_img' => $newPath,
         ]);
-        $post->save();
 
-        $notification = array(
-            'message' => 'Post Shared Successfully',
-            'alert-type' => 'success',
-        );
-
-        return redirect()->route('news.index')->with($notification);
+        return redirect()->route('news.index')->with('toast_success', 'post created successfully!');
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function show($id)
+    public function show(int $id)
     {
         $post = post::findOrFail($id);
 
@@ -92,9 +78,9 @@ class PostController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         $post = post::findOrFail($id);
         return view('admin_view.news.edit_post', compact('post'));
@@ -103,87 +89,95 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param UpdatePostRequest $request
+     * @param int $id
+     * @return RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(UpdatePostRequest $request, int $id)
     {
-        $validated = $request->validate([
-            'content' => 'required',
-            'post_img' => 'required | image | mimes:jpeg,png,jpg,gif',
-            'post_title' => 'required'
-        ], [
-            'content.required' => 'please enter post content',
-            'post_img.required' => 'upload post image',
-            'post_img.mimes' => 'post image extension must be [ jpeg, png, jpg, gif]',
-            'post_img.image' => 'upload real image',
-            'post_title.required' => 'enter title for the post',
-        ]);
-
+        $validated = $request->validated();
 
         $post = post::findOrFail($id);
 
-        dd($post);
+        if ($request->file('newImg')) {
 
+            unlink($post['post_img']);
+
+            $img = $request->file('post_img');
+            $newName = hexdec(uniqid()). '.' . $img->getClientOriginalExtension();
+            $newPath = 'uploads/posts/' . $newName;
+
+            Image::make($img)->save($newPath);
+
+            $post->update([
+                'title' => $request['post_title'],
+                'tag' =>  $request['post_tag'],
+                'content' => $request['content'],
+                'post_img' => $newPath,
+            ]);
+
+        } else {
+
+            $post = post::findOrFail($id)->update([
+                'title' => $request['post_title'],
+                'tag' =>  $request['post_tag'],
+                'content' =>  $request['content'],
+            ]);
+        }
+
+        return redirect()
+            ->route('news.index')
+            ->with('toast_success', 'post updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $post = post::findOrFail($id)->delete();
 
-        $notification = array(
-            'message' => 'Post deleted Successfully',
-            'alert-type' => 'error',
-        );
-
-        return redirect()->back()->with($notification);
+        return redirect()->back()->with('toast_success', 'post deleted');
     }
 
-    public function activatedPost($id)
+    /**
+     * Active the specified resource.
+     *
+     * @param  int  $id
+     * @return RedirectResponse
+     */
+    public function activatedPost(int $id)
     {
-
-        $post = post::findOrFail($id);
-
-        $post->update([
-           'status' => true,
-           'updated_at' => Carbon::now(),
-        ]);
-
-        $notification = array(
-            'message' => 'Post activated Successfully',
-            'alert-type' => 'info',
-        );
-
-        return redirect()->back()->with($notification);
-    }
-
-    public function disActivePost($id)
-    {
-        $post = post::findOrFail($id);
-
-        $post->update([
-            'status' => false,
+        post::findOrFail($id)->update([
+            'status' => true,
             'updated_at' => Carbon::now(),
         ]);
 
-        $notification = array(
-            'message' => 'Post dis-activated Successfully',
-            'alert-type' => 'info',
-        );
+        return redirect()->back()->with('toast_success', 'post activated');
+    }
 
-        return redirect()->back()->with($notification);
+    /**
+     * Dis-Active the specified resource.
+     *
+     * @param  int  $id
+     * @return RedirectResponse
+     */
+    public function disActivePost(int $id)
+    {
+       post::findOrFail($id)->update([
+           'status' => false,
+           'updated_at' => Carbon::now(),
+       ]);
+
+       return redirect()->back()->with('toast_success', 'post dis-activated');
     }
 
     public function allPosts()
     {
-        $posts = post::where('status', true)->orderBy('created_at', 'DESC')->paginate(1);
+        $posts = post::where('status', true)->orderBy('created_at', 'DESC')->paginate(4);
         return view('user_view.news.blog', compact(['posts']));
     }
 }

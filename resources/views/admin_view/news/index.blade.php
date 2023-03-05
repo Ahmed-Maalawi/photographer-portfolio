@@ -46,14 +46,14 @@
                                     </td>
                                     <td class="action h4">
                                         <div class="table-action-buttons">
-                                            <a class="view button button-box button-xs button-primary" href="order-details.html"><i class="zmdi zmdi-more"></i></a>
-                                            <a class="edit button button-box button-xs button-info" href="{{ route('news.edit', $post->id) }}"><i class="zmdi zmdi-edit"></i></a>
+{{--                                            <a class="view button button-box button-xs button-primary" href="order-details.html"><i class="zmdi zmdi-more"></i></a>--}}
+                                            <a class="edit button button-box button-xs button-info" href="{{ route('news.edit', $post['id']) }}"><i class="zmdi zmdi-edit"></i></a>
                                             @if($post['status'])
-                                                <a class="delete button button-box button-xs button-dark" href="{{ route('news.dis-active', $post->id) }}"><i class="fa-solid fa-arrow-down"></i></a>
+                                                <a class="delete button button-box button-xs button-dark" href="{{ route('news.dis-active', $post['id']) }}"><i class="fa-solid fa-arrow-down"></i></a>
                                             @else
-                                                <a class="button button-box button-xs button-primary" href="{{ route('news.activated', $post->id) }}"><i class="fa-solid fa-arrow-up"></i></a>
+                                                <a class="button button-box button-xs button-primary" href="{{ route('news.activated', $post['id']) }}"><i class="fa-solid fa-arrow-up"></i></a>
                                             @endif
-                                            <a class="delete button button-box button-xs button-danger" href="{{ route('news.destroy', $post->id) }}"><i class="zmdi zmdi-delete"></i></a>
+                                            <a class="delete button button-box button-xs button-danger" href="{{ route('news.destroy', $post['id']) }}"><i class="zmdi zmdi-delete"></i></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -66,8 +66,5 @@
                 </div>
             </div>
             <!--Order List End-->
-
         </div>
-
-
 @endsection

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Collection;
-use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
+use App\Http\Requests\StoreCollectionRequest;
+use App\Http\Requests\UpdateCollectionRequest;
 use Intervention\Image\Facades\Image;
 use App\Models\Image as IMG;
+use App\Models\Collection;
 
 
 class CollectionController extends Controller
@@ -17,115 +17,47 @@ class CollectionController extends Controller
         return view('admin_view.collection.add_collection', compact('allCollections'));
     }
 
-    public function storeCollection(Request $request)
+    public function storeCollection(StoreCollectionRequest $request)
     {
-
-        $request->validate([
-            'name' => 'required',
-            'Collection_img' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
-            'description' => 'required',
-        ], [
-            'name.required' => 'Enter Collection Name',
-            'img_path.required' => 'Enter Collection Img',
-            'img_path.mimes' => 'image extension must be jpg,png,jpeg,gif,svg',
-            'description.required' => 'Enter Collection Description',
-        ]);
+        $request->validated();
 
         $img = $request->file('Collection_img');
         $createName = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
         $save_url = 'uploads/collections/' . $createName;
         Image::make($img)->save($save_url);
 
-
-        $newCollection = Collection::insert([
-            'name' => $request->name,
+        Collection::create([
+            'name' => $request['name'],
             'img_path' => $save_url,
-            'description' => $request->description,
-            'created_at' => Carbon::now(),
+            'description' => $request['description'],
         ]);
 
-        $notification = array(
-            'message' => 'Collection Added Successfully',
-            'alert-type' => 'success',
-        );
-
-        return redirect()->back()->with($notification);
+        return redirect()->back()->with('toast_success', 'collection added successfully');
     }
 
-    public function deleteCollection($id)
+    public function deleteCollection(int $id)
     {
         $collection = Collection::findOrFail($id);
-        unlink($collection->img_path);
-        Collection::findOrFail($id)->delete();
+        $images = IMG::where('collection_id', $id)->get();;
 
-        $notification = array(
-            'message' => 'Collection Deleted Successfully',
-            'alert-type' => 'error',
-        );
+        foreach ($images as $img) { $this->deletePhoto($img['id']); }
 
-        return redirect()->back()->with($notification);
+        unlink( $collection['img_path'] );
+        $collection->delete();
+
+        return redirect()->back()->with('toast_success', 'collection deleted successfully!');
     }
 
-    public function ActiveCollection($id)
-    {
-        Collection::findOrFail($id)->updated([
-            'status' => true,
-            'updated_at' => Carbon::now(),
-        ]);
-
-        $images = IMG::where('collection_id', $id)->update([
-            'status' => true,
-            'updated_at' => Carbon::now(),
-        ]);
-
-        $notification = array(
-            'message' => 'Collection Active Successfully',
-            'alert-type' => 'info',
-        );
-        return redirect()->back()->with($notification);
-    }
-
-    public function disActiveCollection($id)
-    {
-
-        Collection::findOrFail($id)->updated([
-            'status' => false,
-            'updated_at' => Carbon::now(),
-        ]);
-
-        $images = IMG::where('collection_id', $id)->update([
-            'status' => false,
-            'updated_at' => Carbon::now(),
-        ]);
-
-
-        $notification = array(
-            'message' => 'Collection Dis-Active Successfully',
-            'alert-type' => 'info',
-        );
-
-        return redirect()->back()->with($notification);
-    }
-
-    public function editCollection($id)
+    public function editCollection(int $id)
     {
         $collection = Collection::findOrFail($id);
 
         return view('admin_view.collection.edit_collection', compact('collection'));
     }
 
-    public function updateCollection(Request $request)
+    public function updateCollection(UpdateCollectionRequest $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'img_path' => 'image|mimes:jpg,png,jpeg,gif,svg',
-            'description' => 'required',
-        ], [
-            'name.required' => 'Enter Collection Name',
-            'img_path.image' => 'file must be image',
-            'img_path.mimes' => 'image extension must be jpg,png,jpeg,gif,svg',
-            'description.required' => 'Enter Collection Description',
-        ]);
+        $request->validated();
 
         $id = $request->collection_id;
         $collection = Collection::findOrFail($id);
@@ -137,60 +69,63 @@ class CollectionController extends Controller
             $newPath = 'uploads/collections/' . $createNewName;
             Image::make($img)->save($newPath);
 
-            $oldImg = $collection->img_path;
+            $oldImg = IMG::where('collection_id', $id)->get();
+
             unlink($oldImg);
 
             $collection->update([
-                'name' => $request->name,
+                'name' => $request['name'],
                 'img_path' => $newPath,
-                'description' => $request->description,
+                'description' => $request['description'],
             ]);
 
         } else {
+
             $collection->update([
-                'name' => $request->name,
-                'description' => $request->description,
+                'name' => $request['name'],
+                'description' => $request['description'],
             ]);
         }
 
-        $collection = Collection::findOrFail($id)->update([
-            'name' => $request,
-            'Collection_img' => $request,
-            'description' => $request,
-        ]);
-
-        $notification = array(
-            'message' => 'Collection Updated Successfully',
-            'alert-type' => 'info',
-        );
-
-        return redirect()->route('add.collection')->with($notification);
+        return redirect()->route('add.collection')->with('toast_success', 'collection updated successfully!');
     }
 
-    public function addPhotos($id)
+
+    public function ActiveCollection(int $id)
+    {
+        Collection::findOrFail($id)->update(['status' => true]);
+
+        $images = IMG::where('collection_id', $id)->get();
+        foreach ($images as $img) { $img->update(['status' => true]); }
+
+        return redirect()->back()->with('toast_success', 'collection activated');
+    }
+
+    public function disActiveCollection(int $id)
+    {
+        Collection::findOrFail($id)->update(['status' => false]);
+
+        $images = IMG::where('collection_id', $id)->get();
+        foreach ($images as $img) { $img->update(['status' => false]); }
+
+        return redirect()->back()->with('toast_success', 'collection dis-activated');
+    }
+
+    public function addPhotos(int $id)
     {
         $collection = Collection::findOrFail($id);
         $collection_img = IMG::where('collection_id', $id)->get();
-//        dd($collection_img);
 
        return view('admin_view.collection.add_photos', compact('collection', 'collection_img'));
     }
 
-    public function deletePhoto($id)
+    public function deletePhoto(int $id)
     {
-
         $img = IMG::findOrFail($id);
 
-        $path_img = $img->img_path;
-
-        unlink($path_img);
-
+        unlink($img->img_path);
         $img->delete();
 
-        $notification = array(
-            'message' => 'Image Deleted Successfully',
-            'alert-type' => 'success',
-        );
-        return redirect()->back()->with($notification);
+        return redirect()->back()->with('toast_success', 'image deleted successfully!');
     }
 }

@@ -48,7 +48,7 @@
                                 <a class="button button-info" href="{{ route('edit.collection', $collection->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
                                 <a class="button button-info" href="{{ route('addPhotos', $collection->id) }}"><i class="fa-solid fa-plus"></i></a>
                                 <a class="button button-danger" href="{{ route('delete.collection', $collection->id) }}" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
-                                @if($collection->status == true)
+                                @if($collection->status)
                                     <a class="button button-dark" href="{{ route('disActive.collection', $collection->id) }}" title="Dis-Active"><i class="fa-solid fa-arrow-down"></i></a>
                                 @else
                                     <a class="button button-secondary" href="{{ route('active.collection', $collection->id) }}" title="Active"><i class="fa-solid fa-arrow-up"></i></a>
@@ -57,27 +57,26 @@
                         </tr>
                     @endforeach
 
-                    <tfoot>
-                    <tr class="footable-paging">
-                        <td colspan="6">
-                            <div class="footable-pagination-wrapper">
-                                <ul class="pagination">
-                                    <li class="footable-page-nav disabled" data-page="first"><a class="footable-page-link" href="#">«</a></li>
-                                    <li class="footable-page-nav disabled" data-page="prev"><a class="footable-page-link" href="#">‹</a></li>
-                                    <li class="footable-page visible active" data-page="1"><a class="footable-page-link" href="#">1</a></li>
-                                    <li class="footable-page visible" data-page="2"><a class="footable-page-link" href="#">2</a></li>
-                                    <li class="footable-page visible" data-page="3"><a class="footable-page-link" href="#">3</a></li>
-                                    <li class="footable-page-nav" data-page="next"><a class="footable-page-link" href="#">›</a></li>
-                                    <li class="footable-page-nav" data-page="last"><a class="footable-page-link" href="#">»</a></li>
-                                </ul>
-                                <div class="divider"></div>
-                                <span class="label label-default">1 of 3</span>
-                            </div>
-                        </td>
-                    </tr>
-                    </tfoot>
+{{--                    <tfoot>--}}
+{{--                    <tr class="footable-paging">--}}
+{{--                        <td colspan="6">--}}
+{{--                            <div class="footable-pagination-wrapper">--}}
+{{--                                <ul class="pagination">--}}
+{{--                                    <li class="footable-page-nav disabled" data-page="first"><a class="footable-page-link" href="#">«</a></li>--}}
+{{--                                    <li class="footable-page-nav disabled" data-page="prev"><a class="footable-page-link" href="#">‹</a></li>--}}
+{{--                                    <li class="footable-page visible active" data-page="1"><a class="footable-page-link" href="#">1</a></li>--}}
+{{--                                    <li class="footable-page visible" data-page="2"><a class="footable-page-link" href="#">2</a></li>--}}
+{{--                                    <li class="footable-page visible" data-page="3"><a class="footable-page-link" href="#">3</a></li>--}}
+{{--                                    <li class="footable-page-nav" data-page="next"><a class="footable-page-link" href="#">›</a></li>--}}
+{{--                                    <li class="footable-page-nav" data-page="last"><a class="footable-page-link" href="#">»</a></li>--}}
+{{--                                </ul>--}}
+{{--                                <div class="divider"></div>--}}
+{{--                                <span class="label label-default">1 of 3</span>--}}
+{{--                            </div>--}}
+{{--                        </td>--}}
+{{--                    </tr>--}}
+{{--                    </tfoot>--}}
                 </table>
-
             </div>
         </div>
         <!--Form controls Start-->

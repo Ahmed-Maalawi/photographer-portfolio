@@ -9,18 +9,17 @@ use App\Models\Image;
 use App\Models\Member;
 use App\Models\post;
 use App\Models\Video;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     public function index()
     {
 
-//        $collections = Collection::all();
         $photos = Image::latest()->where('status', true)->take(20)->get();
-        $news = post::where('status', true)->get();
+        $news = post::latest()->where('status', true)->take(5)->get();
         $feedback = Feedback::where('status', true)->get();
 //        $photos [] = shuffle($photos);
+
         return view('user_view.index', compact( 'photos', 'feedback', 'news'));
     }
 
@@ -43,28 +42,31 @@ class UserController extends Controller
     public function videos()
     {
         return view('user_view.gallery.video', [
-            'videos' => [] // Video::all()
+            'videos' => Video::all()
         ]);
     }
 
     public function photos()
     {
-        $collections = Collection::where('status', true)->orderBy('name', 'ASC')->get();
+        $collections = Collection::where('status', true)
+            ->orderBy('name', 'ASC')->get();
+
         $images = Image::where('status', true)->latest()->get();
+
         return view('user_view.gallery.photos', compact('images', 'collections'));
     }
 
-    public function view_collection($id)
+    public function view_collection(int $id)
     {
+        return view('user_view.view_collection', [
+            'collection' => Collection::where('status', true)->find($id)
+        ]);
+    }
 
-        $collection = Collection::findOrFail($id);
-
-        $photos = Image::where(function ($query) {
-            $query->where('status', '=', true);
-        })->where(function ($query) use ($id){
-            $query->where('collection_id', '=', $id);
-        })->get(); //'status', true, 'collection_id', $id
-
-        return view('user_view.view_collection', compact('collection', 'photos'));
+    public function work()
+    {
+        return view('user_view.work', [
+            'collections' => Collection::where('status', true)->get(),
+        ]);
     }
 }

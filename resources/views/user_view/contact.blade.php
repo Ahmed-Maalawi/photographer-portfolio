@@ -23,7 +23,7 @@
                         <div class="contact-link-icon"><img src="{{ asset('user_style/img/icons/c1.svg') }}" alt="" /></div>
                         <div class="contact-link-content">
                             <div class="contact-link-title">Call us </div>
-                            <div class="contact-link-text">+1 203-123-0606 </div>
+                            <div class="contact-link-text">+20 109-309-9287 </div>
                         </div>
                     </div>
                     <div class="contact-link">
@@ -37,7 +37,7 @@
                         <div class="contact-link-icon"><img src="{{ asset('user_style/img/icons/c3.svg') }}" alt="" /></div>
                         <div class="contact-link-content">
                             <div class="contact-link-title">Visit our office </div>
-                            <div class="contact-link-text">24 King St, Charleston, 29401 USA </div>
+                            <div class="contact-link-text">9 St, Maadi, Cairo EGP </div>
                         </div>
                     </div>
                 </div>
@@ -137,7 +137,7 @@
                 <div class="row">
                     <!-- Work together -->
                     <div class="col-md-6 mb-30 animate-box" data-animate-effect="fadeInUp">
-                        <h5>Need help with professional photography? Let's work together! </h5>  <a href="{{ route('contact') }}" class="button-tersiyer">Contact me </a>
+                        <h5>Need help with professional photography? Let's work together! </h5>  <a href="{{ route('user.contact') }}" class="button-tersiyer">Contact me </a>
                     </div>
                     <!-- Testiominals -->
                     <div class="col-md-5 offset-md-1 animate-box" data-animate-effect="fadeInUp">

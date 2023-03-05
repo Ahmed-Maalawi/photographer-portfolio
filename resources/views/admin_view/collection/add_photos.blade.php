@@ -61,7 +61,7 @@
                     @foreach($collection_img as $img)
                         <div class="item">
                             <a class="btn  btn-danger absolute top-5 text-center w-100" href="{{ route('delete.photo', $img->id) }}"><i class="fa-solid fa-xmark"></i></a>
-                            <img class="img-fluid" src="{{ asset($img->img_path) }}" alt=""/>
+                            <img class="img-fluid w-auto" src="{{ asset($img->img_path) }}" alt=""/>
                         </div>
                     @endforeach
                 </div>

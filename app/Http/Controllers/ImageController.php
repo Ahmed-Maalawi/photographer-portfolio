@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Image;
-use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image as IMG;
+use Illuminate\Http\Request;
+use App\Models\Image;
 
 class ImageController extends Controller
 {
@@ -12,7 +12,6 @@ class ImageController extends Controller
     {
         $collection_id = $request->collectionID;
         $images = $request->file('images');
-//        dd($images);
 
         foreach ($images as $img) {
 
@@ -26,13 +25,7 @@ class ImageController extends Controller
             ]);
         }
 
-        $notification = array(
-            'message' => 'Image Added successfully',
-            'alert-type' => 'success',
-        );
-
-        return redirect()->back()->with($notification);
-//        return redirect()->route('add.collection')->with($notification);
+        return redirect()->back()->with('toast_success', 'photo add successfully');
     }
 
     public function displayImages()
@@ -41,41 +34,24 @@ class ImageController extends Controller
         return view('admin_view.collection.manange_images', compact('images'));
     }
 
-    public function Activate($id)
+    public function Activate(int $id)
     {
-        $Image = Image::findOrFail($id)->update([
-           'status' => true,
-        ]);
+        $Image = Image::findOrFail($id)->update(['status' => true]);
 
-        $notification = array(
-            'message' => 'Image Activated Successfully',
-            'alert-type' => 'info',
-        );
-        return redirect()->back()->with($notification);
+        return redirect()->back()->with('toast_success', 'photo activated');
     }
 
-    public function disActivate($id)
+    public function disActivate(int $id)
     {
-        $Image = Image::findOrFail($id)->update([
-            'status' => false,
-        ]);
+        $Image = Image::findOrFail($id)->update(['status' => false]);
 
-        $notification = array(
-            'message' => 'Image Dis-Activated Successfully',
-            'alert-type' => 'info',
-        );
-        return redirect()->back()->with($notification);
+        return redirect()->back()->with('toast_success', 'photo dis-activated');
     }
 
-    public function deleteImage($id)
+    public function deleteImage(int $id)
     {
         Image::faindOrFail($id)->delete();
 
-        $notification = array(
-            'message' => 'Image Dis-Activated Successfully',
-            'alert-type' => 'success',
-        );
-
-        return redirect()->back()->with($notification);
+        return redirect()->back()->with('toast_success', 'photo deleted');
     }
 }

@@ -24,12 +24,12 @@
                             <figure><img src="{{ asset($post->post_img) }}" alt="" class="img-fluid" /></figure>
                             <div class="caption">
                                 <h6>{{ $post->tag }} </h6>
-                                <h4><a href="{{ route('blog.view.post', $post->id) }}">{{ $post->title }} </a></h4>
-                                <p>Photographers viverra tristique duis _____ diam the neque nivamus ______ ateuene artines duru setlie _______ the fermen. </p>
+                                <h4><a href="{{ route('user.blog.view.post', $post->id) }}">{{ $post->title }} </a></h4>
+                                <p>{!! \Illuminate\Support\Str::limit($post['content'], 75) !!} </p>
                                 <hr class="border-2" />
                                 <div class="info-wrapper">
-                                    <div class="more"><a href="{{ route('blog.view.post', $post->id) }}" class="link-btn" tabindex="0">Read Post </a></div>
-                                    <div class="date">{{ $post->created_at->format('D, d M Y h:i A')}} </div>
+                                    <div class="more"><a href="{{ route('user.blog.view.post', $post->id) }}" class="link-btn" tabindex="0">Read Post </a></div>
+                                    <div class="date">{{ $post->created_at->format('d M Y')}} </div>
                                 </div>
                             </div>
                         </div>

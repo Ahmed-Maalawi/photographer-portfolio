@@ -24,7 +24,7 @@
 
                             <div class="portfolio-item">
                                 <div class="work-masonry-wrapper item">
-                                    <a href="{{ route('work.photo.view', $item->id) }}" class="work-masonry-item-img-link">  <img src="{{ asset($item->img_path) }}" alt="" />
+                                    <a href="{{ route('user.work.photo.view', $item->id) }}" class="work-masonry-item-img-link">  <img src="{{ asset($item->img_path) }}" alt="" />
                                         <div class="work-masonry-item-img"></div>
                                         <div class="work-masonry-item-content">
                                             <div class="work-masonry-item-category">{{ $item->name }} </div>

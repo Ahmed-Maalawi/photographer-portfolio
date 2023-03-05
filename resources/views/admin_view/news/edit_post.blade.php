@@ -9,14 +9,13 @@
                 <h3>News  <span>/ Edit Post </span></h3>
             </div>
         </div><!-- Page Heading End -->
-
     </div><!-- Page Headings End -->
 
     <div class="row">
 
         <!--Summernote Start-->
         <div class="col-12 mb-30">
-            <form action="{{ route('news.update') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('news.update', $post['id']) }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <div class="box mb-30">
@@ -38,13 +37,18 @@
                         <h3 class="title">Upload Post Image Here </h3>
                     </div>
                     <div class="box-body">
-                        <input name="post_img" id="post_img" class="dropify mb-3" type="file" data-default-file="{{ asset('admin_style/images/error/error-2.png') }}">
+                        <input name="newImg" id="newImg" class="dropify mb-3" type="file" data-default-file="{{ asset('admin_style/images/error/error-2.png') }}">
                     </div>
-                    @error('post_img')
+                    @error('newImg')
                     <div class="alert alert-danger">
                         <small class="text-danger">{{ $message }}</small>
                     </div>
                     @enderror
+
+                    <div class="box-body mt-5">
+                        <label for="post-img">post Cover:</label>
+                        <img id="post-img" class="img-fluid mb-3" src="{{ asset($post['post_img']) }}">
+                    </div>
                 </div>
 
                 <div class="box mb-30">
@@ -62,9 +66,7 @@
                             <input id="post_title" name="post_title" type="text" class="form-control" placeholder="Title" value="{{ $post['title'] }}">
                         </div>
                     </div>
-
                 </div>
-
 
                 <div class="box mb-30">
                     <div class="box-head">
@@ -81,19 +83,15 @@
                             <input id="post_tag" name="post_tag" type="text" class="form-control" placeholder="Tag" value="{{ $post['tag'] }}">
                         </div>
                     </div>
-
                 </div>
 
                 <div class="col-12 mb-20">
-                    <input type="submit" value="Share Post" class="button button-primary float-left">
+                    <input type="submit" value="Update Post" class="button button-primary float-left">
                     <input type="submit" value="cancle" class="button button-danger float-right">
                 </div>
             </form>
-
         </div>
         <!--Summernote End-->
-
-
     </div>
 
 
